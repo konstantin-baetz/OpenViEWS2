@@ -52,7 +52,7 @@ if False:
 # If it doesn't exist cached on your machine it will be fetched from db and transforms computed for you
 # Datasets are defined in views/specs/data/
 dataset = views.DATASETS["cm_africa_imp_0"]
-df = dataset
+df = dataset.df
 # Change False to True to rebuild this datasest if you have updated tables
 if True:
     dataset.refresh()
