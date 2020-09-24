@@ -1158,8 +1158,8 @@ for model in models:
     # Calibrated predictions
     df_pred = model.predict_calibrated(
         df=df,
-        period_calib=period_a,
-        period_test=period_b,
+        period_calib=period_calib,
+        period_test=period_test,
     )
     df = assign_into_df(df_to=df, df_from=df_pred)
     df_pred = model.predict_calibrated(
@@ -1174,8 +1174,8 @@ if False:
     for ensemble in ensembles:
         df_pred = ensemble.predict(
             df=df,
-            period_calib=period_a,
-            period_test=period_b,
+            period_calib=period_calib,
+            period_test=period_test,
         )
         df = assign_into_df(df_to=df, df_from=df_pred)
         df_pred = ensemble.predict(
