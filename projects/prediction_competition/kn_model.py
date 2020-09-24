@@ -1164,11 +1164,12 @@ for model in models:
     df = assign_into_df(df_to=df, df_from=df_pred)
     df_pred = model.predict_calibrated(
         df=df,
-        period_calib=period_b,
-        period_test=period_c,
+        period_calib = period_calib,
+        period_test = period_test
     )
     df = assign_into_df(df_to=df, df_from=df_pred)
 
+    
 if False:
     for ensemble in ensembles:
         df_pred = ensemble.predict(
