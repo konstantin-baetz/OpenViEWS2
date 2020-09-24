@@ -1033,7 +1033,7 @@ models = [benchmark_delta]
 # In[15]:
 
 
-#get_ipython().run_cell_magic('time', '', '# Train all models\nfor model in models:\n    model.fit_estimators(df)')
+#get_().run_cell_magic('time', '', '# Train all models\nfor model in models:\n    model.fit_estimators(df)')
 
 
 # In[16]:
