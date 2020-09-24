@@ -51,22 +51,22 @@ if False:
 # Get the dataframe for a particular dataset.
 # If it doesn't exist cached on your machine it will be fetched from db and transforms computed for you
 # Datasets are defined in views/specs/data/
-#dataset = views.DATASETS["cm_africa_imp_0"]
-
+dataset = views.DATASETS["cm_africa_imp_0"]
+df = dataset
 # Change False to True to rebuild this datasest if you have updated tables
 if True:
     dataset.refresh()
 
-from views.utils import io
-path = "~/OpenViEWS2/storage/data/datasets/cm_global_imp_0.parquet"  # change to your path
-cm_global_imp_0 = io.parquet_to_df(path)
+#from views.utils import io
+#path = "~/OpenViEWS2/storage/data/datasets/cm_global_imp_0.parquet"  # change to your path
+#cm_global_imp_0 = io.parquet_to_df(path)
 
 
 
 # Get the main dataframe
-from views.utils import io
+#from views.utils import io
 #df = dataset.df
-df = cm_global_imp_0[cm_global_imp_0["in_africa"] == 1]
+#df = cm_global_imp_0[cm_global_imp_0["in_africa"] == 1]
 
 
 
@@ -1139,7 +1139,7 @@ ensembles_delta = [avg_ensemble_delta]
 import gc
 gc.collect()
 
-%%time
+#%%time
 # Fit estimator for their specified steps and periods
 # Estimators are stored on disk with only a reference in the model object
 # This could be omitted after the first run of the notebook
