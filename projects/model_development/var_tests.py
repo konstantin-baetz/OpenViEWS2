@@ -33,3 +33,4 @@ list(df.columns.values)
 
 #var = tlag_8_ged_dummy_sb
 if 'tlag_8_ged_dummy_sb' in df.columns: print("variable exists. we good.")
+    else print("variable does not exist. probably a problem.")
