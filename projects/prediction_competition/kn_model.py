@@ -995,7 +995,7 @@ model_baseline = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator=RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator=RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1006,7 +1006,7 @@ model_0 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1017,7 +1017,7 @@ model_1 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1028,7 +1028,7 @@ model_2 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags = ["sb"]
 )
 
@@ -1039,7 +1039,7 @@ model_3 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1052,7 +1052,7 @@ model_d0 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb", "delta"]
 )
 
@@ -1064,7 +1064,7 @@ model_d1 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1076,7 +1076,7 @@ model_d2 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags = ["sb"]
 )
 
@@ -1088,7 +1088,7 @@ model_d3 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
+    estimator = RandomForestClassifier(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
