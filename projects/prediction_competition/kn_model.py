@@ -51,7 +51,7 @@ if False:
 # Get the dataframe for a particular dataset.
 # If it doesn't exist cached on your machine it will be fetched from db and transforms computed for you
 # Datasets are defined in views/specs/data/
-dataset = views.DATASETS["cm_africa_imp_0"]
+dataset = views.DATASETS["cm_global_imp_0"]
 df = dataset.df
 # Change False to True to rebuild this datasest if you have updated tables
 if True:
@@ -940,18 +940,7 @@ test_features = [
 basic_features = [
     "time_since_ged_dummy_sb",
     "time_since_ged_dummy_ns",
-    "time_since_ged_dummy_os",
-    "tlag_1_ged_dummy_sb",
-    "tlag_2_ged_dummy_sb",
-    "tlag_3_ged_dummy_sb",
-    "tlag_4_ged_dummy_sb",
-    "tlag_5_ged_dummy_sb",
-    "tlag_6_ged_dummy_sb",
-    "tlag_7_ged_dummy_sb",
-    "tlag_8_ged_dummy_sb",
-    "tlag_9_ged_dummy_sb",
-    "tlag_10_ged_dummy_sb",
-    "splag_1_1_ged_dummy_sb"]
+    "time_since_ged_dummy_os",]
 
 structural_variables = [
     "pcpi_tcurrent",
