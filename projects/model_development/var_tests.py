@@ -29,6 +29,7 @@ log = logging.getLogger(__name__)
 
 dataset = views.DATASETS["cm_global_imp_0"]
 df = dataset.df
+list(df.columns.values)
 
 #var = tlag_8_ged_dummy_sb
 if 'tlag_8_ged_dummy_sb' in df.columns: print("variable exists. we good.")
