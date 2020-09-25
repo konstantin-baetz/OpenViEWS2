@@ -30,7 +30,7 @@ log = logging.getLogger(__name__)
 from views.utils import io
 path = "~/OpenViEWS2/storage/data/datasets/manual.parquet"  # change to your path
 cm_global_imp_0 = io.parquet_to_df(path)
-
+dataset = cm_global_imp_0
 
 
 df = dataset.df
