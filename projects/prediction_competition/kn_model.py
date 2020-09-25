@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# coding: utf-8
 # Logging imports
 import sys
 import json
@@ -127,7 +129,7 @@ print(periods)
 type(periods)
 
 # define steps:
-steps = [1, 2, 3, 4, 5, 6]
+steps = [1, 2, 3, 4, 5, 6, 7]
 
 
 #using the columns for the bechmark model:
@@ -943,12 +945,13 @@ basic_features = [
     "time_since_ged_dummy_os",]
 
 structural_variables = [
-    "imfweo_pcpi_tcurrent",
-    "imfweo_pcpi_tmin1",
-    "imfweo_pcpi_tplus1",
-    "imfweo_bca_ngdpd_tcurrent",
-    "imfweo_bca_ngdpd_tmin1",
-    "imfweo_bca_ngdpd_tplus1",
+    "imfweo_pcpie_tcurrent",
+    "imfweo_pcpie_tmin1",
+    "imfweo_pcpie_tplus1",
+    "imfweo_ngdp_d_tcurrent",
+    "imfweo_ngdp_d_tmin1",
+    "imfweo_ngdp_d_tplus1",
+    "imfweo_ngdp_d_tplus2",
     "wdi_fp_cpi_totl",
     "vdem_v2x_polyarchy",
     "kn_oilprice",
@@ -1115,14 +1118,6 @@ avg_ensemble_delta = Ensemble(
 ensembles = [avg_ensemble]
 ensembles_delta = [avg_ensemble_delta]
 
-
-import gc
-gc.collect()
-
-#%%time
-# Fit estimator for their specified steps and periods
-# Estimators are stored on disk with only a reference in the model object
-# This could be omitted after the first run of the notebook
 for model in models:
     model.fit_estimators(df)
 
