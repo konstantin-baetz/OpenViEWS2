@@ -943,12 +943,12 @@ basic_features = [
     "time_since_ged_dummy_os",]
 
 structural_variables = [
-    "pcpi_tcurrent",
-    "pcpi_tmin1",
-    "pcpi_tplus1",
-    "bca_ngdpd_tcurrent",
-    "bca_ngdpd_tmin1",
-    "bca_ngdpd_tplus1",
+    "imfweo_pcpi_tcurrent",
+    "imfweo_pcpi_tmin1",
+    "imfweo_pcpi_tplus1",
+    "imfweo_bca_ngdpd_tcurrent",
+    "imfweo_bca_ngdpd_tmin1",
+    "imfweo_bca_ngdpd_tplus1",
     "wdi_fp_cpi_totl",
     "vdem_v2x_polyarchy",
     "kn_oilprice",
