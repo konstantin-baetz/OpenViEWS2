@@ -51,25 +51,10 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 
 # Get the dataframe for a particular dataset.
-# If it doesn't exist cached on your machine it will be fetched from db and transforms computed for you
-# Datasets are defined in views/specs/data/
-dataset = views.DATASETS["cm_global_imp_0"]
-df = dataset.df
-# Change False to True to rebuild this datasest if you have updated tables
-if True:
-    dataset.refresh()
-
-#from views.utils import io
-#path = "~/OpenViEWS2/storage/data/datasets/cm_global_imp_0.parquet"  # change to your path
-#cm_global_imp_0 = io.parquet_to_df(path)
-
-
-
-# Get the main dataframe
-#from views.utils import io
-#df = dataset.df
-#df = cm_global_imp_0[cm_global_imp_0["in_africa"] == 1]
-
+from views.utils import io
+path = "~/OpenViEWS2/storage/data/datasets/manual.parquet"  # change to your path
+cm_global_imp_0 = io.parquet_to_df(path)
+df = cm_global_imp_0
 
 
 #make country and year dummies
