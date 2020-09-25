@@ -27,7 +27,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-dataset = views.DATASETS["cm_global_imp_0"]
+dataset = views.DATASETS["download"]
 df = dataset.df
 vars = list(df.columns.values)
 print(*vars, sep = "\n")
