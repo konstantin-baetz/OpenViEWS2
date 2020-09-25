@@ -109,18 +109,18 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 # Keeping periods in a list lets us easily expand this as the
 # updated data becomes available
 period_calib = api.Period(
-    name="calib",
-    train_start=121,   # 1990-01
-    train_end=408,     # 2013.12
-    predict_start=409, # 2014.01
-    predict_end=444,   # 2016.12
-)
-period_test = api.Period(
-    name="test",
+    name="calib", 
     train_start=121,   # 1990-01
     train_end=444,     # 2016.12
     predict_start=445, # 2017.01
-    predict_end=480,   # 2019.12
+    predict_end=488,   # 2020.08
+)
+period_test = api.Period(
+    name="test", 
+    train_start=121,   # 1990-01
+    train_end=488,     # 2020.08
+    predict_start=489, # 2020.09
+    predict_end=495,   # 2019.12
 )
 periods = [period_calib, period_test]
 print(periods)
@@ -994,6 +994,8 @@ features_2 = basic_features + mdums + cdums + structural_variables + political_v
 features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
 features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
 
+estimators = 200
+
 model_baseline = api.Model(
     name = "benchmark model",
     col_outcome= "ged_dummy_sb",
@@ -1001,18 +1003,7 @@ model_baseline = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator=RandomForestClassifier(n_jobs=-1, n_estimators=100),
-    tags=["sb"]
-)
-
-model_test = api.Model(
-    name = "test model",
-    col_outcome = "ged_dummy_sb",
-    cols_features = features_test,
-    steps = steps,
-    periods = periods,
-    outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator=RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1023,7 +1014,7 @@ model_0 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1034,7 +1025,7 @@ model_1 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1045,7 +1036,7 @@ model_2 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags = ["sb"]
 )
 
@@ -1056,7 +1047,7 @@ model_3 = api.Model(
     steps = steps,
     periods = periods,
     outcome_type = "prob",
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1069,7 +1060,7 @@ model_d0 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags=["sb", "delta"]
 )
 
@@ -1081,7 +1072,7 @@ model_d1 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags=["sb"]
 )
 
@@ -1093,7 +1084,7 @@ model_d2 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags = ["sb"]
 )
 
@@ -1105,14 +1096,14 @@ model_d3 = api.Model(
     periods = periods,
     outcome_type = "prob",
     delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=100),
+    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
     tags=["sb"]
 )
 
 # Lists of models are convenient
-all_models = [model_0, model_1, model_2, model_3]
+models = [model_0, model_1, model_2, model_3]
 delta_models = [model_d0, model_d1, model_d2, model_d3]
-models = [model_test]
+#models = [model_test]
 
 
 avg_ensemble = Ensemble(
