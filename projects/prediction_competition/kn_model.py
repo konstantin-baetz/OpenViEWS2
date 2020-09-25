@@ -1190,9 +1190,9 @@ for model in models:
 
 # Evaluate all ensembles, limit to B and C.
 # In future evaluate will figure out itself where it has predictions to evaluate and this will be just one call.
-for ensemble in ensembles:
-    ensemble.evaluate(df, period=periods_by_name["B"])
-    ensemble.evaluate(df, period=periods_by_name["C"])
+#for ensemble in ensembles:
+#    ensemble.evaluate(df, period=periods_by_name["B"])
+#    ensemble.evaluate(df, period=periods_by_name["C"])
 
 for model in models:
     print(model.name)
@@ -1205,13 +1205,13 @@ for model in models:
 
 # Ignore the uncalibrated scores, they are identical to calibrated.
 # Evaluation needs a bit of a refactor
-for ensemble in ensembles:
-    print(ensemble.name)
-    print("Weights:")
-    print(json.dumps(ensemble.weights, indent=2))
-    print("Eval scores:")
-    print(json.dumps(ensemble.evaluation.scores, indent=2))
-    print("#"*80)
+#for ensemble in ensembles:
+#    print(ensemble.name)
+#    print("Weights:")
+#    print(json.dumps(ensemble.weights, indent=2))
+#    print("Eval scores:")
+#    print(json.dumps(ensemble.evaluation.scores, indent=2))
+#    print("#"*80)
 
 # Access individual eval scores like a dict
 print(models[0].name)
