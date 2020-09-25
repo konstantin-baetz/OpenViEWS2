@@ -18,10 +18,6 @@ from views.apps.evaluation import lib as evallib, feature_importance as fi
 from views.apps.model import api
 from views.apps.extras import extras
 
-
-# In[2]:
-
-
 logging.basicConfig(
     level=logging.DEBUG,
     format=views.config.LOGFMT,
@@ -33,3 +29,6 @@ log = logging.getLogger(__name__)
 
 dataset = views.DATASETS["cm_global_imp_0"]
 df = dataset.df
+
+#var = tlag_8_ged_dummy_sb
+if 'tlag_8_ged_dummy_sb' in df.columns: print("variable exists. we good.")
