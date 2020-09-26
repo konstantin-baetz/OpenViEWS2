@@ -98,8 +98,8 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 period_calib = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
-    train_end=444,     # 2016.12
-    predict_start=445, # 2017.01
+    train_end=479,     # 2019.12
+    predict_start=480, # 2020.01
     predict_end=488,   # 2020.08
 )
 period_test = api.Period(
@@ -107,7 +107,7 @@ period_test = api.Period(
     train_start=121,   # 1990-01
     train_end=488,     # 2020.08
     predict_start=489, # 2020.09
-    predict_end=495,   # 2019.12
+    predict_end=495,   # 2021.03
 )
 periods = [period_calib, period_test]
 print(periods)
