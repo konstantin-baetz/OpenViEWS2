@@ -1148,6 +1148,10 @@ if False:
 for model in models:
     model.evaluate(df)
 
+# Save model objects to file
+for model in models:
+    model.save()
+    
 # Evaluate all ensembles, limit to B and C.
 # In future evaluate will figure out itself where it has predictions to evaluate and this will be just one call.
 #for ensemble in ensembles:
