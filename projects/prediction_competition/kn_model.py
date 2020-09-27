@@ -1052,79 +1052,11 @@ model_3 = api.Model(
 )
 
 
-model_d0 = api.Model(
-    name = "basic model",
-    col_outcome = "ged_dummy_sb",
-    cols_features = features_0,
-    steps = steps,
-    periods = periods,
-    outcome_type = "prob",
-    delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
-    tags=["sb", "delta"]
-)
-
-model_d1 = api.Model(
-    name = "model with structural variables",
-    col_outcome = "ged_dummy_sb",
-    cols_features = features_1,
-    steps = steps,
-    periods = periods,
-    outcome_type = "prob",
-    delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
-    tags=["sb"]
-)
-
-model_d2 = api.Model(
-    name = "model with elections",
-    col_outcome = "ged_dummy_sb",
-    cols_features = features_2,
-    steps = steps,
-    periods = periods,
-    outcome_type = "prob",
-    delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
-    tags = ["sb"]
-)
-
-model_d3 = api.Model(
-    name = "full model",
-    col_outcome = "ged_dummy_sb",
-    cols_features = features_3,
-    steps = steps,
-    periods = periods,
-    outcome_type = "prob",
-    delta_outcome = True,
-    estimator = RandomForestClassifier(n_jobs=-1, n_estimators=estimators),
-    tags=["sb"]
-)
 
 # Lists of models are convenient
 #models = [model_0, model_1, model_2, model_3]
-delta_models = [model_d0, model_d1, model_d2, model_d3]
+
 models = [model_baseline]
-
-
-avg_ensemble = Ensemble(
-    name="avg_ensemble",
-    models=models,
-    outcome_type="prob",
-    col_outcome="ged_best_sb",
-    method="average",
-    periods=periods
-)
-
-avg_ensemble_delta = Ensemble(
-    name="avg_ensemble_delta",
-    models=delta_models,
-    outcome_type="prob",
-    col_outcome="ged_best_sb",
-    method="average",
-    periods=periods
-)
-ensembles = [avg_ensemble]
-ensembles_delta = [avg_ensemble_delta]
 
 #for model in models:
 #    model.fit_estimators(df)
@@ -1142,13 +1074,8 @@ for model in models:
     df_pred = model.predict_calibrated(
         df=df,
         period_calib=period_calib,
-        period_test=period_test,
-    )
-    df = assign_into_df(df_to=df, df_from=df_pred)
-    df_pred = model.predict_calibrated(
-        df=df,
-        period_calib = period_calib,
-        period_test = period_test
+        period_test=period_test
+        perod_pred=,
     )
     df = assign_into_df(df_to=df, df_from=df_pred)
 
