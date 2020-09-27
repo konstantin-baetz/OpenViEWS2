@@ -1125,8 +1125,8 @@ avg_ensemble_delta = Ensemble(
 ensembles = [avg_ensemble]
 ensembles_delta = [avg_ensemble_delta]
 
-for model in models:
-    model.fit_estimators(df)
+#for model in models:
+#    model.fit_estimators(df)
 
 # Predict and store predictions for their specified steps and periods in df
 for model in models:
