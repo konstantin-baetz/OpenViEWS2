@@ -883,9 +883,34 @@ test_features = [
     "time_since_ged_dummy_sb"]
 
 basic_features = [
-    "time_since_ged_dummy_sb",
-    "time_since_ged_dummy_ns",
-    "time_since_ged_dummy_os",]
+    'splag_1_1_acled_count_ns',
+    'splag_1_1_acled_count_os',
+    'splag_1_1_acled_count_pr',
+    'splag_1_1_acled_count_sb',
+    'splag_1_1_ged_best_ns',
+    'splag_1_1_ged_best_os',
+    'splag_1_1_ged_best_sb',
+    'time_since_acled_dummy_ns',
+    'time_since_acled_dummy_os',
+    'time_since_acled_dummy_pr',
+    'time_since_acled_dummy_sb',
+    'time_since_ged_dummy_ns',
+    'time_since_ged_dummy_os',
+    'time_since_ged_dummy_sb',
+    'time_since_greq_100_splag_1_1_ged_best_sb',
+    'time_since_greq_25_ged_best_ns',
+    'time_since_greq_25_ged_best_os',
+    'time_since_greq_25_ged_best_sb',
+    'time_since_greq_500_ged_best_ns',
+    'time_since_greq_500_ged_best_os',
+    'time_since_greq_500_ged_best_sb',
+    'time_since_splag_1_1_acled_dummy_ns',
+    'time_since_splag_1_1_acled_dummy_os',
+    'time_since_splag_1_1_acled_dummy_pr',
+    'time_since_splag_1_1_acled_dummy_sb',
+    'time_since_splag_1_1_ged_dummy_ns',
+    'time_since_splag_1_1_ged_dummy_os',
+    'time_since_splag_1_1_ged_dummy_sb',]
 
 structural_variables = [
     "imfweo_pcpie_tcurrent",
@@ -925,7 +950,7 @@ survey_variables = [
 features_test = test_features
 features_0 = basic_features + mdums + cdums
 features_1 = basic_features + mdums + cdums + structural_variables + corona_variables
-features_2 = basic_features + mdums + cdums + structural_variables + political_variables
+features_2 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables
 features_3 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables
 #features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
 
