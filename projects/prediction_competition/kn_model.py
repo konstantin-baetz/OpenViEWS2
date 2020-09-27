@@ -1102,7 +1102,7 @@ model_d3 = api.Model(
 # Lists of models are convenient
 #models = [model_0, model_1, model_2, model_3]
 delta_models = [model_d0, model_d1, model_d2, model_d3]
-models = [model_baseline]
+models = [model_test]
 
 
 avg_ensemble = Ensemble(
