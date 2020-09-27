@@ -1015,9 +1015,9 @@ model_3 = api.Model(
 
 
 # Lists of models are convenient
-#models = [model_0, model_1, model_2, model_3]
+models = [model_0, model_1, model_2, model_3]
 
-models = [model_baseline]
+#models = [model_baseline]
 # Train all models
 for model in models:
     model.fit_estimators(df)
