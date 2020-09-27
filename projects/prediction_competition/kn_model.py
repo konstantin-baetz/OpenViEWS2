@@ -92,22 +92,37 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key = lambda x: int
 mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int(x.split("_")[1]))
 
-# Define our 2017.01-2019.12 development period
-# Keeping periods in a list lets us easily expand this as the
-# updated data becomes available
+#own periods
+#period_calib = api.Period(
+#    name="calib", 
+#    train_start=121,   # 1990-01
+#    train_end=479,     # 2019.12
+#    predict_start=480, # 2020.01
+#    predict_end=488,   # 2020.08
+#)
+#period_test = api.Period(
+#    name="test", 
+#    train_start=121,   # 1990-01
+#    train_end=488,     # 2020.08
+#    predict_start=489, # 2020.09
+#    predict_end=495,   # 2021.03
+#)
+#periods = [period_calib, period_test]
+
+#from benchmark
 period_calib = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
-    train_end=479,     # 2019.12
-    predict_start=480, # 2020.01
-    predict_end=488,   # 2020.08
+    train_end=408,     # 2013.12
+    predict_start=409, # 2014.01
+    predict_end=444,   # 2016.12
 )
 period_test = api.Period(
     name="test", 
     train_start=121,   # 1990-01
-    train_end=488,     # 2020.08
-    predict_start=489, # 2020.09
-    predict_end=495,   # 2021.03
+    train_end=444,     # 2016.12
+    predict_start=445, # 2017.01
+    predict_end=480,   # 2019.12
 )
 periods = [period_calib, period_test]
 print(periods)
