@@ -40,6 +40,7 @@ from views.apps.pipeline.models_cm import all_cm_models_by_name
 
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 
+models = [model_baseline]
 
 for model in models:
     model.evaluate(df)
