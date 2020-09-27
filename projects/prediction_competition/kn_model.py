@@ -131,7 +131,8 @@ period_predict = api.Period(
     predict_start=489, # 2014.01
     predict_end=495,   # 2016.12
 )
-periods = [period_calib, period_test, period_predict]
+periods = [period_calib, period_test]
+#periods = [period_calib, period_test, period_predict]
 print(periods)
 type(periods)
 
@@ -1102,7 +1103,7 @@ model_d3 = api.Model(
 # Lists of models are convenient
 #models = [model_0, model_1, model_2, model_3]
 delta_models = [model_d0, model_d1, model_d2, model_d3]
-models = [model_test]
+models = [model_benchmark]
 
 
 avg_ensemble = Ensemble(
