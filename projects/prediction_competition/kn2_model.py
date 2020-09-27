@@ -938,7 +938,7 @@ model_baseline = api.Model(
     cols_features = features_benchmark,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
@@ -949,7 +949,7 @@ model_0 = api.Model(
     cols_features = features_0,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
@@ -960,7 +960,7 @@ model_1 = api.Model(
     cols_features = features_1,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
@@ -971,7 +971,7 @@ model_2 = api.Model(
     cols_features = features_2,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags = ["sb"]
 )
@@ -982,7 +982,7 @@ model_3 = api.Model(
     cols_features = features_3,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
