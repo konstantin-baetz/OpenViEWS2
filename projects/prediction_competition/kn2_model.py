@@ -949,9 +949,9 @@ survey_variables = [
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = basic_features + mdums + cdums + structural_variables + corona_variables
-features_2 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables
-features_3 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables
+features_1 = basic_features + mdums + cdums + structural_variables 
+features_2 = basic_features + mdums + cdums + structural_variables + political_variables
+features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
 #features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
 
 
@@ -1015,7 +1015,7 @@ model_3 = api.Model(
 
 
 # Lists of models are convenient
-models = [model_0, model_1, model_2, model_3]
+models = [model_1, model_2, model_3]
 
 #models = [model_baseline]
 # Train all models
