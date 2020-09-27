@@ -1180,7 +1180,48 @@ for model in models:
 #for ensemble in ensembles:
 #    ensemble.evaluate(df, period=periods_by_name["B"])
 #    ensemble.evaluate(df, period=periods_by_name["C"])
+# Select the partition here.
+partition = "test"
 
+for model in models:
+    for calib in ["uncalibrated", "calibrated"]:
+        scores = {
+            "Step":[], 
+            "MSE":[], 
+            "R2":[]
+        }
+        if model.delta_outcome:
+            scores.update({"TADDA":[]}) 
+            
+        for key, value in model.scores[partition].items():
+            if key != "sc":
+                scores["Step"].append(key)
+                scores["MSE"].append(value[calib]["mse"])
+                scores["R2"].append(value[calib]["r2"])
+                if model.delta_outcome:
+                    scores["TADDA"].append(value[calib]["tadda_score"])
+
+        out = pd.DataFrame(scores)
+        tex = out.to_latex(index=False)
+
+        # Add meta.
+        now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        meta = f"""
+        %Output created by wb_models.ipynb.
+        %Evaluation of {model.col_outcome} per step.
+        %Run on selected {model.name} features at {level} level.
+        %Produced on {now}, written to {out_paths["evaluation"]}.
+        \\
+        """
+        tex = meta + tex
+        path_out = os.path.join(
+            out_paths["evaluation"], 
+            f"{model.name}_{level}_{calib}_scores.tex"
+        )
+        with open(path_out, "w") as f:
+            f.write(tex)
+        print(f"Wrote scores table to {path_out}.")
+        
 for model in models:
     print(model.name)
     # print(model.scores)
