@@ -81,7 +81,7 @@ period_test = api.Period(
 periods = [period_calib, period_test]
 steps = [1, 2, 3, 4, 5, 6]
 
-cols_cm = [
+features_benchmark = [
     'cdum_1',
     'cdum_10',
     'cdum_100',
