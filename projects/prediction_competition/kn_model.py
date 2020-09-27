@@ -124,7 +124,14 @@ period_test = api.Period(
     predict_start=445, # 2017.01
     predict_end=480,   # 2019.12
 )
-periods = [period_calib, period_test]
+period_predict = api.Period(
+    name = "pred",
+    train_start=121,   # 1990-01
+    train_end=488,     # 2013.12
+    predict_start=489, # 2014.01
+    predict_end=495,   # 2016.12
+)
+periods = [period_calib, period_test, period_predict]
 print(periods)
 type(periods)
 
