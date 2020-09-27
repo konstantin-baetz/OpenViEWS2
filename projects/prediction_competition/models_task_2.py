@@ -951,8 +951,8 @@ features_test = test_features
 features_0 = basic_features + mdums + cdums
 features_1 = basic_features + mdums + cdums + structural_variables 
 features_2 = basic_features + mdums + cdums + structural_variables + political_variables
-#features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
-#features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
+features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
+features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
 
 
 estimators = 200
