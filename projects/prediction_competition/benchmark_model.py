@@ -1042,7 +1042,9 @@ models = [benchmark_delta]
 
 # In[16]:
 
-
+for model in models:
+    model.fit_estimators(df)
+    
 # If pred_africa, subset df to Africa
 if pred_africa and level=="cm":
     df = df.loc[df.in_africa==1]
