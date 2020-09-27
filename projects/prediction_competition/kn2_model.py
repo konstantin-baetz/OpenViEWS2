@@ -951,7 +951,7 @@ features_test = test_features
 features_0 = basic_features + mdums + cdums
 features_1 = basic_features + mdums + cdums + structural_variables 
 features_2 = basic_features + mdums + cdums + structural_variables + political_variables
-features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
+#features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
 #features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
 
 
@@ -980,7 +980,7 @@ model_0 = api.Model(
 )
 
 model_1 = api.Model(
-    name = "model with structural variables",
+    name = "model with structural variables (no corona)",
     col_outcome = "ged_dummy_sb",
     cols_features = features_1,
     steps = steps,
@@ -1015,7 +1015,7 @@ model_3 = api.Model(
 
 
 # Lists of models are convenient
-models = [model_1, model_2, model_3]
+models = [model_0, model_1, model_2]
 
 #models = [model_baseline]
 # Train all models
