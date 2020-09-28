@@ -27,6 +27,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
+level = "cm"
 
 
 model_path = "./models/{sub}"
@@ -78,7 +79,24 @@ period_test = api.Period(
     predict_start=445, # 2017.01
     predict_end=480,   # 2019.12
 )
-periods = [period_calib, period_test]
+
+period_calib_t1 = api.Period(
+    name="calib", 
+    train_start=121,   # 1990-01
+    train_end=444,     # 
+    predict_start=445, # 
+    predict_end=448,   #
+)
+# True forecasts
+period_true_t1 = api.Period(
+    name="true",
+    train_start=121,   # 1990.01
+    train_end=448,     # 2020.08
+    predict_start=490, # 2020.10
+    predict_end=483,   # 2021.03
+)
+
+periods = [period_calib_t1, period_true_t1]
 steps = [1, 2, 3, 4, 5, 6]
 
 features_benchmark = [
@@ -910,7 +928,7 @@ basic_features = [
     'time_since_splag_1_1_acled_dummy_sb',
     'time_since_splag_1_1_ged_dummy_ns',
     'time_since_splag_1_1_ged_dummy_os',
-    'time_since_splag_1_1_ged_dummy_sb',]
+    'time_since_splag_1_1_ged_dummy_sb']
 
 structural_variables = [
     "imfweo_pcpie_tcurrent",
@@ -949,10 +967,10 @@ survey_variables = [
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = basic_features + mdums + cdums + structural_variables 
-features_2 = basic_features + mdums + cdums + structural_variables + political_variables
-features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
-features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
+features_1 = basic_features + mdums + cdums + structural_variables + corona_variables
+features_2 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables
+features_3 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables
+#features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
 
 
 estimators = 200
@@ -1015,7 +1033,7 @@ model_3 = api.Model(
 
 
 # Lists of models are convenient
-models = [model_0, model_1, model_2]
+models = [model_0, model_1, model_2, model_3]
 
 #models = [model_baseline]
 # Train all models
