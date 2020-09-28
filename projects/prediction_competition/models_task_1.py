@@ -96,8 +96,8 @@ period_true_t1 = api.Period(
     predict_end=483,   # 2021.03
 )
 
-periods = [period_calib_t1, period_true_t1]
-steps = [1, 2, 3, 4, 5, 6]
+periods = [period_true_t1]
+steps = [1, 2, 3, 4, 5, 6, 7]
 
 features_benchmark = [
     'cdum_1',
@@ -998,7 +998,7 @@ model_0 = api.Model(
 )
 
 model_1 = api.Model(
-    name = "model with structural variables (no corona)",
+    name = "model with structural variables",
     col_outcome = "ged_dummy_sb",
     cols_features = features_1,
     steps = steps,
