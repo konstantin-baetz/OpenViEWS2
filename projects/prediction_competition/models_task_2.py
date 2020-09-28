@@ -910,7 +910,7 @@ basic_features = [
     'time_since_splag_1_1_acled_dummy_sb',
     'time_since_splag_1_1_ged_dummy_ns',
     'time_since_splag_1_1_ged_dummy_os',
-    'time_since_splag_1_1_ged_dummy_sb',]
+    'time_since_splag_1_1_ged_dummy_sb']
 
 structural_variables = [
     "imfweo_pcpie_tcurrent",
