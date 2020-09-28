@@ -26,7 +26,7 @@ logging.basicConfig(
     ],
 )
 log = logging.getLogger(__name__)
-level = cm
+level = "cm"
 
 
 model_path = "./models/{sub}"
