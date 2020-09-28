@@ -83,9 +83,9 @@ period_test = api.Period(
 period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
-    train_end=444,     # 
-    predict_start=445, # 
-    predict_end=448,   #
+    train_end=408,     # 2013.12
+    predict_start=409, # 2014.01
+    predict_end=489,   # 2016.12
 )
 # True forecasts
 period_true_t1 = api.Period(
@@ -96,7 +96,7 @@ period_true_t1 = api.Period(
     predict_end=483,   # 2021.03
 )
 
-periods = [period_true_t1]
+periods = [period_calib_t1, period_true_t1]
 steps = [1, 2, 3, 4, 5, 6, 7]
 
 features_benchmark = [
@@ -967,9 +967,9 @@ survey_variables = [
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = basic_features + mdums + cdums + structural_variables + corona_variables
-features_2 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables
-features_3 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables
+features_1 = basic_features + mdums + cdums + structural_variables 
+features_2 = basic_features + mdums + cdums + structural_variables + political_variables
+features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
 #features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
 
 
