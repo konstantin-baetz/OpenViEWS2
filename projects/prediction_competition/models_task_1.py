@@ -65,15 +65,15 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
-    train_end=408,     # 2013.12
-    predict_start=409, # 2014.01
-    predict_end=489,   # 2016.12
+    train_end=483,     # 2013.12
+    predict_start=484, # 2014.01
+    predict_end=488,   # 2016.12
 )
 # True forecasts
 period_true_t1 = api.Period(
     name="true",
     train_start=121,   # 1990.01
-    train_end=448,     # 2020.08
+    train_end=488,     # 2020.08
     predict_start=490, # 2020.10
     predict_end=495,   # 2021.03
 )
@@ -1015,9 +1015,8 @@ model_3 = api.Model(
 
 
 # Lists of models are convenient
-models = [model_0, model_1, model_2, model_3]
-#models = [model_baseline]
-#models = [model_0]
+#models = [model_0, model_1, model_2, model_3]
+models = [model_3]
 #models = [model_baseline]
 # Train all models
 for model in models:
