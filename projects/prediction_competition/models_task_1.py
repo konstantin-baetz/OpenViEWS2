@@ -62,6 +62,11 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key = lambda x: int
 mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int(x.split("_")[1]))
 
+print("testing out variables")
+
+x = df["kn_death_mil"]
+sum(x.isna())
+
 period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
