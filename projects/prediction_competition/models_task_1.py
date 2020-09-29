@@ -97,7 +97,7 @@ period_true_t1 = api.Period(
 )
 
 periods = [period_calib_t1, period_true_t1]
-steps = [1, 2, 3, 4, 5, 6, 7]
+steps = [2, 3, 4, 5, 6, 7]
 
 features_benchmark = [
     'cdum_1',
