@@ -1031,7 +1031,7 @@ for model in models:
     df_predictions = model.predict_calibrated(
         df=df,
         period_calib = period_calib_t1,
-        period_test = period_test_t1
+        period_test = period_true_t1
     )
     df = assign_into_df(df, df_predictions)
 
