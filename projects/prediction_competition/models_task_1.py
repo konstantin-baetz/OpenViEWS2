@@ -62,24 +62,6 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key = lambda x: int
 mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int(x.split("_")[1]))
 
-# Define our 2017.01-2019.12 development period
-# Keeping periods in a list lets us easily expand this as the 
-# updated data becomes available
-period_calib = api.Period(
-    name="calib", 
-    train_start=121,   # 1990-01
-    train_end=408,     # 2013.12
-    predict_start=409, # 2014.01
-    predict_end=444,   # 2016.12
-)
-period_test = api.Period(
-    name="test", 
-    train_start=121,   # 1990-01
-    train_end=444,     # 2016.12
-    predict_start=445, # 2017.01
-    predict_end=480,   # 2019.12
-)
-
 period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
@@ -973,7 +955,7 @@ features_3 = basic_features + mdums + cdums + structural_variables + political_v
 #features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
 
 
-estimators = 200
+estimators = 100
 
 model_baseline = api.Model(
     name = "benchmark model",
