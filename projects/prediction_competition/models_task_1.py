@@ -65,7 +65,7 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 print("testing out variables")
 
 x = df["kn_death_mil"]
-sx = sum(x.isna())
+sx = sum(!x.isna())
 print(sx)
 
 period_calib_t1 = api.Period(
