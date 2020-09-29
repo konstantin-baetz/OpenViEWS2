@@ -62,12 +62,10 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key = lambda x: int
 mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int(x.split("_")[1]))
 
-print("testing out variables")
-print(df.isnull().sum())
 
-x = df["kn_death_mil"]
-y=(x.notna())
-print(y)
+print("testing out variables")
+df_test = df.loc[480:488]
+print(df_test.isnull().sum())
 
 period_calib_t1 = api.Period(
     name="calib", 
