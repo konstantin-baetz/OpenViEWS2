@@ -1081,32 +1081,7 @@ for model in models:
             f.write(tex)
         print(f"Wrote scores table to {path_out}.")
 
-sort_step = 3
-top = 30
 
-def featimp_by_steps(model, steps, sort_step, top, cols):
-    """
-    Return pd.DataFrame of top feature importances by selected steps.
-    
-    Args:
-        model: Model to get importances for.
-        steps: List of ordered steps to include in table.
-        sort_step: Step to sort table by.
-        top: Top number of features to include.
-        cols: Feature list.
-    """
-    for step in steps:
-        fi_dict = model.extras.feature_importances["test"][step]
-        step_df = pd.DataFrame(fi.reorder_fi_dict(fi_dict))
-        step_df = step_df.rename(columns={"importance": f"s={step}"})
-        step_df.set_index("feature", inplace=True)
-        df = df.join(step_df) if step > steps[0] else step_df.copy()
-
-    df = df.sort_values(by=[f"s={sort_step}"], ascending=False)
-    df = df[0:top + 1]
-    
-    return df
-	
 
 for model in models:
     fi_cm = featimp_by_steps(
