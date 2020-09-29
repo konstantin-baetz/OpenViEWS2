@@ -941,8 +941,10 @@ political_variables = [
 
 corona_variables = [
     "kn_death_mil",
-    "kn_case_mil",
-    "kn_hosp_1k"]
+    "kn_case_mil"]
+
+#,
+#    "kn_hosp_1k"
 
 survey_variables = [
     "surkn_n_actors",
