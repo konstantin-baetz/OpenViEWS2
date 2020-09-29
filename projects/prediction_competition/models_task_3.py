@@ -61,24 +61,61 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key = lambda x: int
 mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int(x.split("_")[1]))
 
-# Define our 2017.01-2019.12 development period
-# Keeping periods in a list lets us easily expand this as the 
-# updated data becomes available
-period_calib = api.Period(
+#Periods task 1:
+period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
     train_end=366,     # 2010.12
     predict_start=367, # 2011.01
     predict_end=402,   # 2013.12
 )
-period_test = api.Period(
+period_test_t1 = api.Period(
     name="test", 
     train_start=121,   # 1990-01
     train_end=402,     # 2013.12
     predict_start=403, # 2014.01
     predict_end=444,   # 2016.12
 )
-periods = [period_calib, period_test]
+periods_t1 = [period_calib_t1, period_test_t1]
+
+#Periods task 2:
+period_calib_t2 = api.Period(
+    name="calib", 
+    train_start=121,   # 1990-01
+    train_end=366,     # 2010.12
+    predict_start=367, # 2011.01
+    predict_end=402,   # 2013.12
+)
+period_test_t2 = api.Period(
+    name="test", 
+    train_start=121,   # 1990-01
+    train_end=402,     # 2013.12
+    predict_start=403, # 2014.01
+    predict_end=444,   # 2016.12
+)
+periods_t2 = [period_calib_t2, period_test_t2]
+
+#Periods task 3:
+period_calib_t3 = api.Period(
+    name="calib", 
+    train_start=121,   # 1990-01
+    train_end=366,     # 2010.12
+    predict_start=367, # 2011.01
+    predict_end=402,   # 2013.12
+)
+period_test_t3 = api.Period(
+    name="test", 
+    train_start=121,   # 1990-01
+    train_end=402,     # 2013.12
+    predict_start=403, # 2014.01
+    predict_end=444,   # 2016.12
+)
+periods_t3 = [period_calib_t3, period_test_t3]
+
+
+
+
+
 steps = [1, 2, 3, 4, 5, 6]
 
 features_benchmark = [
