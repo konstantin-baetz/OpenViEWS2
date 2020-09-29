@@ -65,9 +65,9 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
-    train_end=366,     # 2010.12
-    predict_start=367, # 2011.01
-    predict_end=402,   # 2013.12
+    train_end=408,     # 2013.12
+    predict_start=409, # 2014.01
+    predict_end=489,   # 2016.12
 )
 period_test_t1 = api.Period(
     name="test", 
@@ -82,16 +82,16 @@ periods_t1 = [period_calib_t1, period_test_t1]
 period_calib_t2 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
-    train_end=366,     # 2010.12
-    predict_start=367, # 2011.01
-    predict_end=402,   # 2013.12
+    train_end=408,     # 2013.12
+    predict_start=409, # 2014.01
+    predict_end=444,   # 2016.12
 )
 period_test_t2 = api.Period(
     name="test", 
     train_start=121,   # 1990-01
-    train_end=402,     # 2013.12
-    predict_start=403, # 2014.01
-    predict_end=444,   # 2016.12
+    train_end=444,     # 2016.12
+    predict_start=445, # 2017.01
+    predict_end=480,   # 2019.12
 )
 periods_t2 = [period_calib_t2, period_test_t2]
 
@@ -111,10 +111,6 @@ period_test_t3 = api.Period(
     predict_end=444,   # 2016.12
 )
 periods_t3 = [period_calib_t3, period_test_t3]
-
-
-
-
 
 steps = [1, 2, 3, 4, 5, 6]
 
@@ -983,78 +979,75 @@ survey_variables = [
     "sur_pos_std",
     "sur_pos_std_pw",
     "sur_hhi"]
-
-features_test = test_features
-features_0 = basic_features + mdums + cdums
-features_1 = basic_features + mdums + cdums + structural_variables 
-features_2 = basic_features + mdums + cdums + structural_variables + political_variables
-features_3 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables
-features_4 = basic_features + mdums + cdums + structural_variables + political_variables + survey_variables + corona_variables
-
-
+    
 estimators = 200
 
-model_baseline = api.Model(
-    name = "benchmark model",
-    col_outcome= "ged_dummy_sb",
-    cols_features = features_benchmark,
-    steps = steps,
-    periods = periods,
-    outcome_type = "real",
-    estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
-    tags=["sb"]
-)
-
-model_0 = api.Model(
+##task 1, normal models
+model_0_t1 = api.Model(
     name = "basic model",
     col_outcome = "ged_dummy_sb",
     cols_features = features_0,
     steps = steps,
-    periods = periods,
+    periods = periods_t1,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
-model_1 = api.Model(
+model_1_t1 = api.Model(
     name = "model with structural variables (no corona)",
     col_outcome = "ged_dummy_sb",
     cols_features = features_1,
     steps = steps,
-    periods = periods,
+    periods = periods_t1,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
 
-model_2 = api.Model(
+model_2_t1 = api.Model(
     name = "model with elections",
     col_outcome = "ged_dummy_sb",
     cols_features = features_2,
     steps = steps,
-    periods = periods,
+    periods = periods_t1,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags = ["sb"]
 )
 
-model_3 = api.Model(
+model_3_t1 = api.Model(
     name = "model with survey variables",
     col_outcome = "ged_dummy_sb",
     cols_features = features_3,
     steps = steps,
-    periods = periods,
+    periods = periods_t1,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
+##task 1, delta models
 
+##task 2, normal models
 
+##task 2, delta models
+
+##task 3, normal models
+
+##task 3, delta models
 
 # Lists of models are convenient
-models = [model_0, model_1, model_2]
-#models = [model_d0, model_d1, model_d2]
-#models = [model_baseline]
+models_t1 = [model_0_t1, model_1_t1, model_2_t1]
+models_d_t1 = [model_d0_t1, model_d1_t1, model_d2_t1]
+models_t2 = [model_0_t2, model_1_t2, model_2_t2]
+models_d_t2 = [model_d0_t2, model_d1_t2, model_d2_t2]
+models_t3 = [model_0_t3, model_1_t3, model_2_t3]
+models_d_t3 = [model_d0_t3, model_d1_t3, model_d2_t3]
+
+#To chose which models to run, pick out of the above list:
+
+models = model_d_t2
+
 # Train all models
 for model in models:
     model.fit_estimators(df)
