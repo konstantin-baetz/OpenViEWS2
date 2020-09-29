@@ -65,7 +65,7 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 
 print("testing out variables")
 df_test = df.loc[480:488]
-df_test = df_test["kn_death_mil", "kn_case_mil", "kn_hosp_1k"]
+df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k"]]
 print(df_test.isnull().sum())
 
 period_calib_t1 = api.Period(
