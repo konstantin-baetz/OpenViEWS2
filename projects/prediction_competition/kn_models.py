@@ -984,7 +984,7 @@ estimators = 200
 
 ##task 1, normal models
 model_0_t1 = api.Model(
-    name = "basic model",
+    name = "basic_model_t1",
     col_outcome = "ged_dummy_sb",
     cols_features = features_0,
     steps = steps,
@@ -995,7 +995,7 @@ model_0_t1 = api.Model(
 )
 
 model_1_t1 = api.Model(
-    name = "model with structural variables (no corona)",
+    name = "structural_model_t1",
     col_outcome = "ged_dummy_sb",
     cols_features = features_1,
     steps = steps,
@@ -1006,7 +1006,7 @@ model_1_t1 = api.Model(
 )
 
 model_2_t1 = api.Model(
-    name = "model with elections",
+    name = "Model_with_elections_t1",
     col_outcome = "ged_dummy_sb",
     cols_features = features_2,
     steps = steps,
@@ -1017,7 +1017,7 @@ model_2_t1 = api.Model(
 )
 
 model_3_t1 = api.Model(
-    name = "model with survey variables",
+    name = "model_with_survey_t1",
     col_outcome = "ged_dummy_sb",
     cols_features = features_3,
     steps = steps,
@@ -1027,6 +1027,50 @@ model_3_t1 = api.Model(
     tags=["sb"]
 )
 ##task 1, delta models
+
+model_d0_t1 = api.Model(
+    name = "basic_model_t1",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_0,
+    steps = steps,
+    periods = periods_t1,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    tags=["sb"]
+)
+
+model_d1_t1 = api.Model(
+    name = "structural_model_t1",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_1,
+    steps = steps,
+    periods = periods_t1,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    tags=["sb"]
+)
+
+model_d2_t1 = api.Model(
+    name = "Model_with_elections_t1",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_2,
+    steps = steps,
+    periods = periods_t1,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    tags = ["sb"]
+)
+
+model_d3_t1 = api.Model(
+    name = "model_with_survey_t1",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_3,
+    steps = steps,
+    periods = periods_t1,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    tags=["sb"]
+)
 
 ##task 2, normal models
 model_0_t2 = api.Model(
