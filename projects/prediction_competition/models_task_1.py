@@ -1042,7 +1042,7 @@ for model in models:
     model.evaluate(df)
 	
 prediction_data = df.loc[490:495]
-prediction_data.to_csv(path="~/.data_t1.csv")
+prediction_data.to_csv("~/.data_t1.csv")
 
 partition = "true"
 
