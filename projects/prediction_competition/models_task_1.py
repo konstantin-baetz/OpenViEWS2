@@ -63,6 +63,7 @@ mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int
 ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int(x.split("_")[1]))
 
 print("testing out variables")
+print(df.isnull().sum())
 
 x = df["kn_death_mil"]
 y=(x.notna())
