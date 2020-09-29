@@ -1041,7 +1041,10 @@ for model in models:
 for model in models:
     model.evaluate(df)
 	
-partition = "test"
+prediction_data = df.loc[490:495]
+prediction_data.to_csv(path=~)
+
+partition = "true"
 
 for model in models:
     for calib in ["uncalibrated", "calibrated"]:
