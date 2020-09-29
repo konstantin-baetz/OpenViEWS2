@@ -93,7 +93,7 @@ period_true_t1 = api.Period(
     train_start=121,   # 1990.01
     train_end=448,     # 2020.08
     predict_start=490, # 2020.10
-    predict_end=483,   # 2021.03
+    predict_end=495,   # 2021.03
 )
 
 periods = [period_calib_t1, period_true_t1]
