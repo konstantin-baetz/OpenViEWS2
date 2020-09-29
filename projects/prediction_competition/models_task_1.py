@@ -78,7 +78,7 @@ period_true_t1 = api.Period(
     predict_end=495,   # 2021.03
 )
 
-periods = [period_calib_t1, period_true_t1]
+periods = [period_true_t1]
 steps = [2, 3, 4, 5, 6, 7]
 
 features_benchmark = [
