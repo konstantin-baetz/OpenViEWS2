@@ -69,7 +69,7 @@ df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k"]]
 print(df_test.isnull().sum())
 print("testing out regex for later")
 df_pred_test = df.loc[480:488]
-df_pred_test = df_pred_test.filter(regex = (v2ex|allsp)
+df_pred_test = df_pred_test.filter(regex = (/v2ex/|/allsp/))
 df_pred_test.shape
 				   
 period_calib_t1 = api.Period(
@@ -1053,7 +1053,7 @@ for model in models:
     model.evaluate(df)
 	
 prediction_data = df.loc[490:495]
-prediction_data = prediction_data.filter(regex = /model/|/_id/)
+prediction_data = prediction_data.filter(regex = (/model/|/_id/))
 print(shape(prediction_data))
 prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
 #test = pd.read_csv("/pfs/work7/workspace/scratch/kn_pop503398/forecasts_t1.csv")
