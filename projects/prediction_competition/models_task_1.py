@@ -122,8 +122,8 @@ period_true_t1 = api.Period(
 )
 
 #periods = [period_true_t1]
-periods = [period_calib_t1]
-steps = [2,3,4,5,6,7]
+periods = [period_calib_t1, period_true_t1]
+steps = [1,2,3,4,5,6,7]
 
 
 test_features = [
@@ -198,10 +198,10 @@ single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = ["kn_case_mil"]
-features_2 = basic_features + mdums + cdums + structural_variables + political_variables
-features_3 = basic_features + mdums + cdums + structural_variables + political_variables
-features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
+features_1 = basic_features + mdums + cdums + structural_variables + corona_variables 
+features_2 = basic_features + mdums + cdums + structural_variables + corona_variables  + political_variables
+features_3 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
+#features_4 = basic_features + mdums + cdums + structural_variables 
 
 
 estimators = 100
@@ -264,8 +264,8 @@ model_3 = api.Model(
 
 
 # Lists of models are convenient
-#models = [model_0, model_1, model_2, model_3]
-models = [model_1]
+models = [model_0, model_1, model_2, model_3]
+#models = [model_1]
 #models = [model_baseline]
 # Train all models
 for model in models:
