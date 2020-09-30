@@ -64,7 +64,7 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 
 
 print("testing out variables")
-df_test = df.loc[480:488]
+df_test = df.loc[481:488]
 df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k", "kn_oilprice", "sur_hhi"]]
 print(df_test.notnull().sum())
 #print("testing out regex for later")
@@ -164,7 +164,7 @@ single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
+features_1 = ["kn_death_mil", "kn_case_mil", "kn_hosp_1k", "kn_oilprice", "sur_hhi"]
 features_2 = basic_features + mdums + cdums + structural_variables + political_variables
 features_3 = basic_features + mdums + cdums + structural_variables + political_variables
 features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
