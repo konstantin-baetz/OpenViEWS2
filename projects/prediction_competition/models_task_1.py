@@ -52,11 +52,31 @@ df = df.join(df_ydums)
 
 import pandas as pd
 konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory = False)
-#konstanz_df.head()
-list(konstanz_df.columns)
-#konstanz_df.index
+
 
 konstanz_df = konstanz_df.set_index(["month_id", "country_id"])
+kni = konstanz_df.index 
+kn_df = konstanz_df.reset_index().drop('index',1)
+
+for col in kn_df.columns:
+	x = kn_df.index.astype(float).values
+	y = kn_df[col].values
+	# Curve fit column and get curve parameters
+    	params = curve_fit(func, x, y, guess)
+    	# Store optimized parameters
+    	col_params[col] = params[0]
+
+# Extrapolate each column
+for col in kn_df.columns:
+    # Get the index values for NaNs in the column
+    x = kn_df[pd.isnull(kn_df[col])].index.astype(float).values
+    # Extrapolate those points with the fitted function
+    kn_df[col][x] = func(x, *col_params[col])
+
+kn_df.index = kni
+
+konstanz_df = kn_df
+	
 df = df.join(konstanz_df)
 cdums = sorted([col for col in df.columns if "cdum" in col], key = lambda x: int(x.split("_")[1]))
 mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int(x.split("_")[1]))
