@@ -206,16 +206,6 @@ features_3 = basic_features + mdums + cdums + structural_variables + corona_vari
 
 estimators = 100
 
-model_baseline = api.Model(
-    name = "benchmark model",
-    col_outcome= "ged_dummy_sb",
-    cols_features = features_4,
-    steps = steps,
-    periods = periods,
-    outcome_type = "real",
-    estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
-    tags=["sb"]
-)
 
 model_0 = api.Model(
     name = "basic model",
