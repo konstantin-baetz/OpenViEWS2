@@ -4,6 +4,7 @@ import logging
 
 import pandas as pd
 import numpy as np
+import scipy as sp
 from datetime import datetime
 
 from sklearn.ensemble import RandomForestRegressor
@@ -58,7 +59,7 @@ for col in kn_df.columns:
     x = kn_df.index.astype(float).values
     y = kn_df[col].values
     # Curve fit column and get curve parameters
-    params = np.optimize.curve_fit(func, x, y, guess)
+    params = sp.optimize.curve_fit(func, x, y, guess)
     # Store optimized parameters
     col_params[col] = params[0]
 
