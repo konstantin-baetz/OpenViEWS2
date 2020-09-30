@@ -221,7 +221,7 @@ model_0 = api.Model(
     cols_features = features_0,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
@@ -232,7 +232,7 @@ model_1 = api.Model(
     cols_features = features_1,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
@@ -243,7 +243,7 @@ model_2 = api.Model(
     cols_features = features_2,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags = ["sb"]
 )
@@ -254,7 +254,7 @@ model_3 = api.Model(
     cols_features = features_3,
     steps = steps,
     periods = periods,
-    outcome_type = "prob",
+    outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
@@ -354,9 +354,10 @@ for model in models:
 #    model.evaluate(df)
 	
 prediction_data = df.loc[490:495]
+prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
 prediction_data = prediction_data.filter(regex = (model|_id))
 print(shape(prediction_data))
-prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
+prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_short.csv")
 
 
 partition = "true"
