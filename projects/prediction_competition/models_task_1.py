@@ -55,38 +55,36 @@ import pandas as pd
 konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory = False)
 
 print(konstanz_df)
-def func(x, a, b, c, d):
-    return a * (x ** 3) + b * (x ** 2) + c * x + d
+#def func(x, a, b, c, d):
+#    return a * (x ** 3) + b * (x ** 2) + c * x + d
 
 # Initial parameter guess, just to kick off the optimization
-guess = (0.5, 0.5, 0.5, 0.5)
+#guess = (0.5, 0.5, 0.5, 0.5)
 
 # Create copy of data to remove NaNs for curve fitting
-kn_df = konstanz_df.dropna()
+#kn_df = konstanz_df.dropna()
 
-print(kn_df)
+#print(kn_df)
 # Place to store function parameters for each column
-col_params = {}
+#col_params = {}
 
 
-for col in kn_df.columns:
-    x = kn_df.index.astype(float).values
-    y = kn_df[col].values
-    # Curve fit column and get curve parameters
-    params = sp.optimize.curve_fit(func, x, y, guess)
+#for col in kn_df.columns:
+ #   x = kn_df.index.astype(float).values
+  #  y = kn_df[col].values
+   # # Curve fit column and get curve parameters
+    #params = sp.optimize.curve_fit(func, x, y, guess)
     # Store optimized parameters
-    col_params[col] = params[0]
+    #col_params[col] = params[0]
 
 # Extrapolate each column
-for col in kn_df.columns:
-    # Get the index values for NaNs in the column
-    x = kn_df[pd.isnull(kn_df[col])].index.astype(float).values
-    # Extrapolate those points with the fitted function
-    kn_df[col][x] = func(x, *col_params[col])
+#for col in kn_df.columns:
+   # # Get the index values for NaNs in the column
+   # x = kn_df[pd.isnull(kn_df[col])].index.astype(float).values
+   # # Extrapolate those points with the fitted function
+   # kn_df[col][x] = func(x, *col_params[col])
 
-konstanz_df = kn_df.set_index(["month_id", "country_id"])
-
-konstanz_df = kn_df
+konstanz_df = konstanz_df.set_index(["month_id", "country_id"])
 	
 df = df.join(konstanz_df)
 cdums = sorted([col for col in df.columns if "cdum" in col], key = lambda x: int(x.split("_")[1]))
