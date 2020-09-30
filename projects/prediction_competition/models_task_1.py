@@ -316,25 +316,15 @@ models_d = [model_d0, model_d1, model_d2, model_d3]
 #models = [model_1]
 #models = [model_baseline]
 # Train all models
-for model in models:
-    model.fit_estimators(df)
-	
-#for model in models_d:
+#for model in models:
 #    model.fit_estimators(df)
+	
+for model in models_d:
+    model.fit_estimators(df)
 
 df = df.loc[df.in_africa==1]
 
-for model in models:
-    df_predictions = model.predict(df)
-    df = assign_into_df(df, df_predictions)
-    df_predictions = model.predict_calibrated(
-        df=df,
-        period_calib = period_calib_t1,
-        period_test = period_true_t1
-    )
-    df = assign_into_df(df, df_predictions)
-
-#for model in models_d:
+#for model in models:
 #    df_predictions = model.predict(df)
 #    df = assign_into_df(df, df_predictions)
 #    df_predictions = model.predict_calibrated(
@@ -343,21 +333,31 @@ for model in models:
 #        period_test = period_true_t1
 #    )
 #    df = assign_into_df(df, df_predictions)
+
+for model in models_d:
+    df_predictions = model.predict(df)
+    df = assign_into_df(df, df_predictions)
+    df_predictions = model.predict_calibrated(
+        df=df,
+        period_calib = period_calib_t1,
+        period_test = period_true_t1
+    )
+    df = assign_into_df(df, df_predictions)
 	
-for model in models:
-    model.save()
+#for model in models:
+#    model.save()
 	
-#for model in models_d:
-#    model.save()	
+for model in models_d:
+    model.save()	
 
 #for model in models:
 #    model.evaluate(df)
 	
 prediction_data = df.loc[490:495]
-prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
+prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_delta.csv")
 prediction_data = prediction_data.filter(regex = (model|_id))
 print(shape(prediction_data))
-prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_short.csv")
+prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_short_delta.csv")
 
 
 partition = "true"
