@@ -1050,6 +1050,8 @@ for model in models:
 	
 prediction_data = df.loc[490:495]
 prediction_data.to_csv("~/OpenViews2/forecasts_t1.csv")
+test = pd.read_csv("~/OpenViews2/forecasts_t1.csv")
+print(head(test))
 
 partition = "true"
 
