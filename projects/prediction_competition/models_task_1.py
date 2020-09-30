@@ -58,7 +58,7 @@ for col in kn_df.columns:
     x = kn_df.index.astype(float).values
     y = kn_df[col].values
     # Curve fit column and get curve parameters
-    params = scipy.optimize.curve_fit(func, x, y, guess)
+    params = np.optimize.curve_fit(func, x, y, guess)
     # Store optimized parameters
     col_params[col] = params[0]
 
