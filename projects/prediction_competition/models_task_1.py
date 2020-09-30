@@ -63,6 +63,7 @@ guess = (0.5, 0.5, 0.5, 0.5)
 # Create copy of data to remove NaNs for curve fitting
 kn_df = konstanz_df.dropna()
 
+print(kn_df)
 # Place to store function parameters for each column
 col_params = {}
 
