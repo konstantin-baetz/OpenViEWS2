@@ -169,7 +169,7 @@ single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = ["kn_death_mil", "kn_case_mil", "kn_hosp_1k", "kn_oilprice", "sur_hhi"]
+features_1 = ["kn_case_mil"]
 features_2 = basic_features + mdums + cdums + structural_variables + political_variables
 features_3 = basic_features + mdums + cdums + structural_variables + political_variables
 features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
