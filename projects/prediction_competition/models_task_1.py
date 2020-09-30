@@ -54,6 +54,7 @@ df = df.join(df_ydums)
 import pandas as pd
 konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory = False)
 
+print(konstanz_df)
 def func(x, a, b, c, d):
     return a * (x ** 3) + b * (x ** 2) + c * x + d
 
