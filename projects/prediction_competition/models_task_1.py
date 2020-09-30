@@ -1049,7 +1049,7 @@ for model in models:
     model.evaluate(df)
 	
 prediction_data = df.loc[490:495]
-prediction_data = prediction_data[ , grepl( "model" , names( prediction_data ) ) ]
+prediction_data = prediction_data.filter(regex = /model/|/_id/)
 print(shape(prediction_data))
 prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
 #test = pd.read_csv("/pfs/work7/workspace/scratch/kn_pop503398/forecasts_t1.csv")
