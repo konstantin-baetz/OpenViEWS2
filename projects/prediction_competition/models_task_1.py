@@ -109,7 +109,7 @@ period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
     train_end=488,     # 2013.12
-    predict_start=481, # 2014.01
+    predict_start=482, # 2014.01
     predict_end=488,   # 2016.12
 )
 # True forecasts
@@ -121,7 +121,7 @@ period_true_t1 = api.Period(
     predict_end=495,   # 2021.03
 )
 
-#periods = [period_true_t1]
+
 periods = [period_calib_t1, period_true_t1]
 steps = [1,2,3,4,5,6,7]
 
@@ -189,13 +189,16 @@ corona_variables = [
     "kn_case_mil",
     "kn_hosp_1k"]
 
-survey_variables = [
+survey_variables_old = [
     "surkn_n_actors",
     "surkn_pow_var",
     "sur_pos_avg",
     "sur_pos_avg_pw",
     "sur_pos_std",
     "sur_pos_std_pw",
+    "sur_hhi"]
+
+survey_variables_old = [
     "sur_hhi"]
 
 single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
@@ -307,7 +310,7 @@ model_d3 = api.Model(
 
 
 # Lists of models are convenient
-models = [model_2, model_3]
+models = [model_1, model_2, model_3]
 models_d = [model_d0, model_d1, model_d2, model_d3]
 #models = [model_1]
 #models = [model_baseline]
