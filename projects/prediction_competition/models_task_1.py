@@ -71,8 +71,8 @@ print(df_test.isnull().sum())
 period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
-    train_end=483,     # 2013.12
-    predict_start=484, # 2014.01
+    train_end=484,     # 2013.12
+    predict_start=485, # 2014.01
     predict_end=488,   # 2016.12
 )
 # True forecasts
@@ -84,7 +84,7 @@ period_true_t1 = api.Period(
     predict_end=495,   # 2021.03
 )
 
-periods = [period_true_t1]
+periods = [period_calib_t1, period_true_t1]
 steps = [2, 3, 4, 5, 6, 7]
 
 features_benchmark = [
