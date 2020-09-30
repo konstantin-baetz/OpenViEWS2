@@ -198,7 +198,7 @@ survey_variables_old = [
     "sur_pos_std_pw",
     "sur_hhi"]
 
-survey_variables_old = [
+survey_variables = [
     "sur_hhi"]
 
 single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
