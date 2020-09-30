@@ -957,9 +957,11 @@ survey_variables = [
     "sur_pos_std_pw",
     "sur_hhi"]
 
+single_variable = ["kn_case_mil"]
+
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = survey_variables 
+features_1 = single_variable
 features_2 = basic_features + mdums + cdums + structural_variables + political_variables
 features_3 = basic_features + mdums + cdums + structural_variables + political_variables
 #features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
