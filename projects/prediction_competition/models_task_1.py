@@ -63,9 +63,13 @@ mdums = sorted([col for col in df.columns if "mdum" in col], key = lambda x: int
 ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int(x.split("_")[1]))
 
 
-print("testing out variables")
+print("testing out variables, training period 2")
 df_test = df.loc[481:488]
-df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k", "kn_oilprice", "sur_hhi"]]
+df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k", "kn_oilprice", "sur_hhi", "imfweo_pcpie_tcurrent", "splag_1_1_acled_count_ns"]]
+print(df_test.notnull().sum())
+print("testing out variables, true prediction period")
+df_test = df.loc[490:495]
+df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k", "kn_oilprice", "sur_hhi", "imfweo_pcpie_tcurrent", "splag_1_1_acled_count_ns"]]
 print(df_test.notnull().sum())
 #print("testing out regex for later")
 #df_pred_test = df.loc[480:488]
