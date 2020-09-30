@@ -311,7 +311,7 @@ model_d3 = api.Model(
 
 
 # Lists of models are convenient
-models = [model_0, model_1, model_2, model_3]
+models = [model_3]
 models_d = [model_d0, model_d1, model_d2, model_d3]
 #models = [model_1]
 #models = [model_baseline]
@@ -334,21 +334,21 @@ for model in models:
     )
     df = assign_into_df(df, df_predictions)
 
-for model in models_d:
-    df_predictions = model.predict(df)
-    df = assign_into_df(df, df_predictions)
-    df_predictions = model.predict_calibrated(
-        df=df,
-        period_calib = period_calib_t1,
-        period_test = period_true_t1
-    )
-    df = assign_into_df(df, df_predictions)
+#for model in models_d:
+#    df_predictions = model.predict(df)
+#    df = assign_into_df(df, df_predictions)
+#    df_predictions = model.predict_calibrated(
+#        df=df,
+#        period_calib = period_calib_t1,
+#        period_test = period_true_t1
+#    )
+#    df = assign_into_df(df, df_predictions)
 	
 for model in models:
     model.save()
 	
-for model in models_d:
-    model.save()	
+#for model in models_d:
+#    model.save()	
 
 #for model in models:
 #    model.evaluate(df)
