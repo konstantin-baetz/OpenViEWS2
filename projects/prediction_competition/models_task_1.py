@@ -59,12 +59,12 @@ kni = konstanz_df.index
 kn_df = konstanz_df.reset_index().drop('index',1)
 
 for col in kn_df.columns:
-	x = kn_df.index.astype(float).values
-	y = kn_df[col].values
-	# Curve fit column and get curve parameters
-    	params = curve_fit(func, x, y, guess)
-    	# Store optimized parameters
-    	col_params[col] = params[0]
+    x = kn_df.index.astype(float).values
+    y = kn_df[col].values
+    # Curve fit column and get curve parameters
+    params = curve_fit(func, x, y, guess)
+    # Store optimized parameters
+    col_params[col] = params[0]
 
 # Extrapolate each column
 for col in kn_df.columns:
