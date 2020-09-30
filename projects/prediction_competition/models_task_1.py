@@ -173,11 +173,11 @@ structural_variables = [
     "kn_ramadan",
     "kn_food_price"]
 
-political_variables = [
+political_variables_part = [
     "kn_relative_age",
     "kn_leader_age"]
 
-political_variables_full = [
+political_variables = [
     "reign_anticipation",
     "reign_couprisk",
     "reign_delayed",
@@ -204,7 +204,7 @@ features_test = test_features
 features_0 = basic_features + mdums + cdums
 features_1 = basic_features + mdums + cdums + structural_variables + corona_variables 
 features_2 = political_variables
-features_3 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
+features_3 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables
 #features_4 = basic_features + mdums + cdums + structural_variables 
 
 
