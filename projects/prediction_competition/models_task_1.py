@@ -961,7 +961,7 @@ single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = single_variable
+features_1 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
 features_2 = basic_features + mdums + cdums + structural_variables + political_variables
 features_3 = basic_features + mdums + cdums + structural_variables + political_variables
 #features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
@@ -1049,8 +1049,8 @@ for model in models:
 for model in models:
     model.save()
 	
-for model in models:
-    model.evaluate(df)
+#for model in models:
+#    model.evaluate(df)
 	
 prediction_data = df.loc[490:495]
 prediction_data = prediction_data.filter(regex = (model|_id))
