@@ -204,11 +204,11 @@ features_3 = basic_features + mdums + cdums + structural_variables + corona_vari
 #features_4 = basic_features + mdums + cdums + structural_variables 
 
 
-estimators = 100
+estimators = 200
 
 
 model_0 = api.Model(
-    name = "basic model",
+    name = "t1_model_0",
     col_outcome = "ged_dummy_sb",
     cols_features = features_0,
     steps = steps,
@@ -219,7 +219,7 @@ model_0 = api.Model(
 )
 
 model_1 = api.Model(
-    name = "model with structural variables",
+    name = "t1_model_1_struc",
     col_outcome = "ged_dummy_sb",
     cols_features = features_1,
     steps = steps,
@@ -230,7 +230,7 @@ model_1 = api.Model(
 )
 
 model_2 = api.Model(
-    name = "model with elections",
+    name = "t1_model_2_polvars",
     col_outcome = "ged_dummy_sb",
     cols_features = features_2,
     steps = steps,
@@ -241,7 +241,7 @@ model_2 = api.Model(
 )
 
 model_3 = api.Model(
-    name = "model with survey variables",
+    name = "t1_model_3_sur",
     col_outcome = "ged_dummy_sb",
     cols_features = features_3,
     steps = steps,
@@ -252,15 +252,68 @@ model_3 = api.Model(
 )
 
 
+model_d0 = api.Model(
+    name = "t1_model_d0",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_0,
+    steps = steps,
+    periods = periods,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    delta_outcome=True,
+    tags=["sb"]
+)
+
+model_d1 = api.Model(
+    name = "t1_model_d1_struc",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_1,
+    steps = steps,
+    periods = periods,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    delta_outcome=True,
+    tags=["sb"]
+)
+
+model_d2 = api.Model(
+    name = "t1_model_d2_polvars",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_2,
+    steps = steps,
+    periods = periods,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    delta_outcome=True,
+    tags = ["sb"]
+)
+
+model_d3 = api.Model(
+    name = "t1_model_d3_sur",
+    col_outcome = "ged_dummy_sb",
+    cols_features = features_3,
+    steps = steps,
+    periods = periods,
+    outcome_type = "real",
+    estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
+    delta_outcome=True,
+    tags=["sb"]
+)
+
+
 
 # Lists of models are convenient
 models = [model_0, model_1, model_2, model_3]
+models_d = [model_d0, model_d1, model_d2, model_d3]
 #models = [model_1]
 #models = [model_baseline]
 # Train all models
 for model in models:
     model.fit_estimators(df)
 	
+for model in models_d:
+    model.fit_estimators(df)
+
 df = df.loc[df.in_africa==1]
 
 for model in models:
@@ -273,6 +326,16 @@ for model in models:
     )
     df = assign_into_df(df, df_predictions)
 
+for model in models_d:
+    df_predictions = model.predict(df)
+    df = assign_into_df(df, df_predictions)
+    df_predictions = model.predict_calibrated(
+        df=df,
+        period_calib = period_calib_t1,
+        period_test = period_true_t1
+    )
+    df = assign_into_df(df, df_predictions)
+	
 for model in models:
     model.save()
 	
@@ -283,8 +346,7 @@ prediction_data = df.loc[490:495]
 prediction_data = prediction_data.filter(regex = (model|_id))
 print(shape(prediction_data))
 prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
-#test = pd.read_csv("/pfs/work7/workspace/scratch/kn_pop503398/forecasts_t1.csv")
-#print(head(test))
+
 
 partition = "true"
 
