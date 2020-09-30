@@ -76,7 +76,7 @@ period_calib_t1 = api.Period(
     name="calib", 
     train_start=121,   # 1990-01
     train_end=484,     # 2013.12
-    predict_start=485, # 2014.01
+    predict_start=479, # 2014.01
     predict_end=488,   # 2016.12
 )
 # True forecasts
@@ -957,7 +957,7 @@ survey_variables = [
     "sur_pos_std_pw",
     "sur_hhi"]
 
-single_variable = ["sur_hhi"]
+single_variable = ["kn_oil"]
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
