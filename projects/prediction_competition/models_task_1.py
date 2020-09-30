@@ -67,10 +67,10 @@ print("testing out variables")
 df_test = df.loc[480:488]
 df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k"]]
 print(df_test.isnull().sum())
-print("testing out regex for later")
-df_pred_test = df.loc[480:488]
-df_pred_test = df_pred_test.filter(regex = (v2ex|allsp))
-df_pred_test.shape
+#print("testing out regex for later")
+#df_pred_test = df.loc[480:488]
+#df_pred_test = df_pred_test.filter(regex = (v2ex|allsp))
+#df_pred_test.shape
 				   
 period_calib_t1 = api.Period(
     name="calib", 
@@ -961,7 +961,7 @@ survey_variables = [
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
-features_1 = basic_features + mdums + cdums + structural_variables + corona_variables
+features_1 = basic_features + mdums + cdums + structural_variables
 features_2 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables
 features_3 = basic_features + mdums + cdums + structural_variables + political_variables
 #features_4 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables + survey_variables 
@@ -1028,7 +1028,7 @@ model_3 = api.Model(
 
 # Lists of models are convenient
 #models = [model_0, model_1, model_2, model_3]
-#models = [model_0]
+models = [model_1]
 #models = [model_baseline]
 # Train all models
 for model in models:
