@@ -65,8 +65,8 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key = lambda x: int
 
 print("testing out variables")
 df_test = df.loc[480:488]
-df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k"]]
-print(df_test.isnull().sum())
+df_test = df_test[["kn_death_mil", "kn_case_mil", "kn_hosp_1k", "kn_oilprice", "sur_hhi"]]
+print(df_test.notnull().sum())
 #print("testing out regex for later")
 #df_pred_test = df.loc[480:488]
 #df_pred_test = df_pred_test.filter(regex = (v2ex|allsp))
