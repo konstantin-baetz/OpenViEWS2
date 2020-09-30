@@ -54,7 +54,19 @@ df = df.join(df_ydums)
 import pandas as pd
 konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory = False)
 
-kn_df = konstanz_df
+def func(x, a, b, c, d):
+    return a * (x ** 3) + b * (x ** 2) + c * x + d
+
+# Initial parameter guess, just to kick off the optimization
+guess = (0.5, 0.5, 0.5, 0.5)
+
+# Create copy of data to remove NaNs for curve fitting
+kn_df = konstanz_df.dropna()
+
+# Place to store function parameters for each column
+col_params = {}
+
+
 for col in kn_df.columns:
     x = kn_df.index.astype(float).values
     y = kn_df[col].values
