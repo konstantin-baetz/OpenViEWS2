@@ -957,7 +957,7 @@ survey_variables = [
     "sur_pos_std_pw",
     "sur_hhi"]
 
-single_variable = ["kn_oilprice"]
+single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
 
 features_test = test_features
 features_0 = basic_features + mdums + cdums
