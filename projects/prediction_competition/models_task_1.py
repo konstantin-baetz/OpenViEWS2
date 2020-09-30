@@ -53,11 +53,7 @@ df = df.join(df_ydums)
 import pandas as pd
 konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory = False)
 
-
-konstanz_df = konstanz_df.set_index(["month_id", "country_id"])
-kni = konstanz_df.index 
-kn_df = konstanz_df.reset_index().drop('index',1)
-
+kn_df = konstanz_df
 for col in kn_df.columns:
     x = kn_df.index.astype(float).values
     y = kn_df[col].values
@@ -73,7 +69,7 @@ for col in kn_df.columns:
     # Extrapolate those points with the fitted function
     kn_df[col][x] = func(x, *col_params[col])
 
-kn_df.index = kni
+konstanz_df = kn_df.set_index(["month_id", "country_id"])
 
 konstanz_df = kn_df
 	
