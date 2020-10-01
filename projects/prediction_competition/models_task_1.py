@@ -1018,7 +1018,7 @@ survey_variables = [
 single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
 
 features_0 = basic_features + mdums + cdums
-features_1 = benchmark_featues
+features_1 = benchmark_features
 features_2 = basic_features + mdums + cdums + structural_variables + corona_variables + political_variables
 #features_1 = political_variables_part
 #features_2 = basic_features + mdums + cdums + structural_variables + political_variables
