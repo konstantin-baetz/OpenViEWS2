@@ -510,6 +510,7 @@ for model in models:
 df = df.loc[df.in_africa==1]
 
 df_save = df
+
 for model in models_t2:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
@@ -535,6 +536,8 @@ for model in models_d_t2:
 	
 df_pred_d_t2 = df
 df = df_save
+
+
 for model in models_t3:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
@@ -547,6 +550,8 @@ for model in models_t3:
 
 df_pred_t3 = df
 df = df_save
+
+
 for model in models_d_t3:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
