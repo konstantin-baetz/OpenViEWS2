@@ -524,7 +524,7 @@ for model in models_d_t2:
     df = assign_into_df(df, df_predictions)
     df_predictions = model.predict_calibrated(
         df=df,
-        period_calib = period_calib_t2
+        period_calib = period_calib_t2,
         period_test = period_test_t2
     )
     df = assign_into_df(df, df_predictions)
@@ -544,7 +544,7 @@ for model in models_d_t3:
     df = assign_into_df(df, df_predictions)
     df_predictions = model.predict_calibrated(
         df=df,
-        period_calib = period_calib_t3
+        period_calib = period_calib_t3,
         period_test = period_test_t3
     )
     df = assign_into_df(df, df_predictions)
