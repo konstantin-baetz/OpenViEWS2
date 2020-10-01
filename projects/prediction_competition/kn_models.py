@@ -393,7 +393,7 @@ model_d3_t2 = api.Model(
 )
 
 ##task 3, normal models
-model_0_t1 = api.Model(
+model_0_t3 = api.Model(
     name = "basic model",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t3,
@@ -438,7 +438,7 @@ model_3_t3 = api.Model(
 )
 ##task 3, delta models
 
-model_d0_t1 = api.Model(
+model_d0_t3 = api.Model(
     name = "basic model",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t3,
