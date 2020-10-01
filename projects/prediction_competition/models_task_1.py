@@ -1130,11 +1130,11 @@ models = [model_0, model_1, model_2]
 #models = [model_1]
 #models = [model_baseline]
 # Train all models
-#for model in models:
-#    model.fit_estimators(df)
-	
-for model in models_d:
+for model in models:
     model.fit_estimators(df)
+	
+#for model in models_d:
+#    model.fit_estimators(df)
 
 df = df.loc[df.in_africa==1]
 
