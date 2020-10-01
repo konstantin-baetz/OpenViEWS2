@@ -202,6 +202,8 @@ features_m0_t3 = basic_features
 features_m1_t3 = basic_features + structural_variables
 features_m2_t3 = basic_features + structural_variables + political_variables
 features_m3_t3 = basic_features + structural_variables + political_variables + survey_variables
+
+##number of estimator
 estimators = 200
 
 
@@ -300,8 +302,8 @@ model_d3_t1 = api.Model(
 )
 
 ##task 2, normal models
-model_d0_t2 = api.Model(
-    name = "model_d0_t2",
+model_0_t2 = api.Model(
+    name = "model_0_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t2,
     steps = steps,
