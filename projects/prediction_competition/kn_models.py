@@ -252,7 +252,7 @@ model_3_t1 = api.Model(
 ##task 1, delta models
 
 model_d0_t1 = api.Model(
-    name = "basic_model_t1",
+    name = "model_d0_t1",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t1,
     steps = steps,
@@ -300,8 +300,8 @@ model_d3_t1 = api.Model(
 )
 
 ##task 2, normal models
-model_0_t2 = api.Model(
-    name = "basic model",
+model_d0_t2 = api.Model(
+    name = "model_d0_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t2,
     steps = steps,
@@ -312,7 +312,7 @@ model_0_t2 = api.Model(
 )
 
 model_1_t2 = api.Model(
-    name = "model with structural variables (no corona)",
+    name = "model_1_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m1_t2,
     steps = steps,
@@ -323,7 +323,7 @@ model_1_t2 = api.Model(
 )
 
 model_2_t2 = api.Model(
-    name = "model with elections",
+    name = "model_2_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m2_t2,
     steps = steps,
@@ -334,7 +334,7 @@ model_2_t2 = api.Model(
 )
 
 model_3_t2 = api.Model(
-    name = "model with survey variables",
+    name = "model_3_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m3_t2,
     steps = steps,
@@ -345,7 +345,7 @@ model_3_t2 = api.Model(
 )
 ##task 2, delta models
 model_d0_t2 = api.Model(
-    name = "basic model",
+    name = "model_d0_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t2,
     steps = steps,
@@ -357,7 +357,7 @@ model_d0_t2 = api.Model(
 )
 
 model_d1_t2 = api.Model(
-    name = "model with structural variables (no corona)",
+    name = "model_d1_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m1_t2,
     steps = steps,
@@ -369,7 +369,7 @@ model_d1_t2 = api.Model(
 )
 
 model_d2_t2 = api.Model(
-    name = "model with elections",
+    name = "model_d2_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m2_t2,
     steps = steps,
@@ -381,7 +381,7 @@ model_d2_t2 = api.Model(
 )
 
 model_d3_t2 = api.Model(
-    name = "model with survey variables",
+    name = "model_d3_t2",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m3_t2,
     steps = steps,
@@ -394,7 +394,7 @@ model_d3_t2 = api.Model(
 
 ##task 3, normal models
 model_0_t3 = api.Model(
-    name = "basic model",
+    name = "model_0_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t3,
     steps = steps,
@@ -405,7 +405,7 @@ model_0_t3 = api.Model(
 )
 
 model_1_t3 = api.Model(
-    name = "model with structural variables (no corona)",
+    name = "model_1_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m1_t3,
     steps = steps,
@@ -416,7 +416,7 @@ model_1_t3 = api.Model(
 )
 
 model_2_t3 = api.Model(
-    name = "model with elections",
+    name = "model_2_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m2_t3,
     steps = steps,
@@ -427,7 +427,7 @@ model_2_t3 = api.Model(
 )
 
 model_3_t3 = api.Model(
-    name = "model with survey variables",
+    name = "model_3_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m3_t3,
     steps = steps,
@@ -439,7 +439,7 @@ model_3_t3 = api.Model(
 ##task 3, delta models
 
 model_d0_t3 = api.Model(
-    name = "basic model",
+    name = "model_d0_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t3,
     steps = steps,
@@ -451,7 +451,7 @@ model_d0_t3 = api.Model(
 )
 
 model_d1_t3 = api.Model(
-    name = "model with structural variables (no corona)",
+    name = "model_d1_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m1_t3,
     steps = steps,
@@ -463,7 +463,7 @@ model_d1_t3 = api.Model(
 )
 
 model_d2_t3 = api.Model(
-    name = "model with elections",
+    name = "model_d2_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m2_t3,
     steps = steps,
@@ -475,7 +475,7 @@ model_d2_t3 = api.Model(
 )
 
 model_d3_t3 = api.Model(
-    name = "model with survey variables",
+    name = "model_d3_t3",
     col_outcome = "ged_dummy_sb",
     cols_features = features_m3_t3,
     steps = steps,
