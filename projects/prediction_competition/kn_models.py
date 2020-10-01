@@ -495,7 +495,7 @@ models_d_t2 = [model_d0_t2, model_d1_t2, model_d2_t2]
 models_t3 = [model_0_t3, model_1_t3, model_2_t3]
 models_d_t3 = [model_d0_t3, model_d1_t3, model_d2_t3]
 
-all_models = models_t1 + models_dt1 + models_t2 + models_dt2 + models_t3 + models_dt3
+all_models = models_t1 + models_d_t1 + models_t2 + models_d_t2 + models_t3 + models_d_t3
 #To chose which models to run, pick out of the above list:
 
 models = models_t2 + models_d_t2 + models_t3 + models_d_t3
