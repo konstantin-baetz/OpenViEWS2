@@ -509,6 +509,7 @@ for model in models:
 	
 df = df.loc[df.in_africa==1]
 
+df_save = df
 for model in models_t2:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
@@ -518,7 +519,10 @@ for model in models_t2:
         period_test = period_test_t2
     )
     df = assign_into_df(df, df_predictions)
-	
+
+df_pred_t2 = df
+df = df_save
+
 for model in models_d_t2:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
@@ -528,7 +532,9 @@ for model in models_d_t2:
         period_test = period_test_t2
     )
     df = assign_into_df(df, df_predictions)
-
+	
+df_pred_d_t2 = df
+df = df_save
 for model in models_t3:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
@@ -538,7 +544,9 @@ for model in models_t3:
         period_test = period_test_t3
     )
     df = assign_into_df(df, df_predictions)
-	
+
+df_pred_t3 = df
+df = df_save
 for model in models_d_t3:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
@@ -548,16 +556,147 @@ for model in models_d_t3:
         period_test = period_test_t3
     )
     df = assign_into_df(df, df_predictions)
+	
+df_pred_d_t3 = df
+df = df_save
 
 for model in models:
     model.save()
-	
+
 for model in models:
-    model.evaluate(df)
+    model.evaluate(df_pred_t2)
+for model in models:
+    model.evaluate(df_pred_d_t2)
+for model in models:
+    model.evaluate(df_pred_t3)
+for model in models:
+    model.evaluate(df_pred_d_t3)
 	
 partition = "test"
 
-for model in models:
+df = df_pred_t2
+for model in models_t2:
+    for calib in ["uncalibrated", "calibrated"]:
+        scores = {
+            "Step":[], 
+            "MSE":[], 
+            "R2":[]
+        }
+        if model.delta_outcome:
+            scores.update({"TADDA":[]}) 
+            
+        for key, value in model.scores[partition].items():
+            if key != "sc":
+                scores["Step"].append(key)
+                scores["MSE"].append(value[calib]["mse"])
+                scores["R2"].append(value[calib]["r2"])
+                if model.delta_outcome:
+                    scores["TADDA"].append(value[calib]["tadda_score"])
+
+        out = pd.DataFrame(scores)
+        tex = out.to_latex(index=False)
+
+        # Add meta.
+        now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        meta = f"""
+        %Output created by wb_models.ipynb.
+        %Evaluation of {model.col_outcome} per step.
+        %Run on selected {model.name} features at {level} level.
+        %Produced on {now}, written to {out_paths["evaluation"]}.
+        \\
+        """
+        tex = meta + tex
+        path_out = os.path.join(
+            out_paths["evaluation"], 
+            f"{model.name}_{level}_{calib}_scores.tex"
+        )
+        with open(path_out, "w") as f:
+            f.write(tex)
+        print(f"Wrote scores table to {path_out}.")
+
+df = df_pred_d_t2
+for model in models_d_t2:
+    for calib in ["uncalibrated", "calibrated"]:
+        scores = {
+            "Step":[], 
+            "MSE":[], 
+            "R2":[]
+        }
+        if model.delta_outcome:
+            scores.update({"TADDA":[]}) 
+            
+        for key, value in model.scores[partition].items():
+            if key != "sc":
+                scores["Step"].append(key)
+                scores["MSE"].append(value[calib]["mse"])
+                scores["R2"].append(value[calib]["r2"])
+                if model.delta_outcome:
+                    scores["TADDA"].append(value[calib]["tadda_score"])
+
+        out = pd.DataFrame(scores)
+        tex = out.to_latex(index=False)
+
+        # Add meta.
+        now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        meta = f"""
+        %Output created by wb_models.ipynb.
+        %Evaluation of {model.col_outcome} per step.
+        %Run on selected {model.name} features at {level} level.
+        %Produced on {now}, written to {out_paths["evaluation"]}.
+        \\
+        """
+        tex = meta + tex
+        path_out = os.path.join(
+            out_paths["evaluation"], 
+            f"{model.name}_{level}_{calib}_scores.tex"
+        )
+        with open(path_out, "w") as f:
+            f.write(tex)
+        print(f"Wrote scores table to {path_out}.")
+
+df = df_pred_t3
+for model in models_t3:
+    for calib in ["uncalibrated", "calibrated"]:
+        scores = {
+            "Step":[], 
+            "MSE":[], 
+            "R2":[]
+        }
+        if model.delta_outcome:
+            scores.update({"TADDA":[]}) 
+            
+        for key, value in model.scores[partition].items():
+            if key != "sc":
+                scores["Step"].append(key)
+                scores["MSE"].append(value[calib]["mse"])
+                scores["R2"].append(value[calib]["r2"])
+                if model.delta_outcome:
+                    scores["TADDA"].append(value[calib]["tadda_score"])
+
+        out = pd.DataFrame(scores)
+        tex = out.to_latex(index=False)
+
+        # Add meta.
+        now = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
+        meta = f"""
+        %Output created by wb_models.ipynb.
+        %Evaluation of {model.col_outcome} per step.
+        %Run on selected {model.name} features at {level} level.
+        %Produced on {now}, written to {out_paths["evaluation"]}.
+        \\
+        """
+        tex = meta + tex
+        path_out = os.path.join(
+            out_paths["evaluation"], 
+            f"{model.name}_{level}_{calib}_scores.tex"
+        )
+        with open(path_out, "w") as f:
+            f.write(tex)
+        print(f"Wrote scores table to {path_out}.")
+
+
+df = df_pred_d_t3
+for model in models_d_t3:
     for calib in ["uncalibrated", "calibrated"]:
         scores = {
             "Step":[], 
