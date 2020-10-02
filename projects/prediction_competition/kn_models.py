@@ -635,7 +635,7 @@ for model in models_d_t2:
             if key != "sc":
                 scores["Step"].append(key)
                 #scores["MSE"].append(value[calib]["mse"])
-                scores["R2"].append(value[calib]["r2"])
+                #scores["R2"].append(value[calib]["r2"])
                 if model.delta_outcome:
                     scores["TADDA"].append(value[calib]["tadda_score"])
 
