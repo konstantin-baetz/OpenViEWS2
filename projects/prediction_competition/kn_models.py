@@ -568,7 +568,9 @@ for model in models_d_t2:
 for model in models:
     model.save()
 
-for model in models:
+for model in models_t2:
+    model.evaluate(df)
+for model in models_t2:
     model.evaluate(df)
 #for model in models:
 #    model.evaluate(df_pred_d_t2)
@@ -619,7 +621,6 @@ for model in models_t2:
             f.write(tex)
         print(f"Wrote scores table to {path_out}.")
 
-df = df_pred_d_t2
 for model in models_d_t2:
     for calib in ["uncalibrated", "calibrated"]:
         scores = {
@@ -658,6 +659,9 @@ for model in models_d_t2:
         with open(path_out, "w") as f:
             f.write(tex)
         print(f"Wrote scores table to {path_out}.")
+
+
+
 
 df = df_pred_t3
 for model in models_t3:
