@@ -582,7 +582,7 @@ for model in models_t2:
 partition = "test"
 
 
-for model in models_t2:
+for model in models_d_t2:
     for calib in ["uncalibrated", "calibrated"]:
         scores = {
             "Step":[], 
@@ -621,7 +621,10 @@ for model in models_t2:
             f.write(tex)
         print(f"Wrote scores table to {path_out}.")
 
-for model in models_d_t2:
+
+
+
+for model in models_t2:
     for calib in ["uncalibrated", "calibrated"]:
         scores = {
             "Step":[], 
@@ -634,8 +637,8 @@ for model in models_d_t2:
         for key, value in model.scores[partition].items():
             if key != "sc":
                 scores["Step"].append(key)
-                #scores["MSE"].append(value[calib]["mse"])
-                #scores["R2"].append(value[calib]["r2"])
+                scores["MSE"].append(value[calib]["mse"])
+                scores["R2"].append(value[calib]["r2"])
                 if model.delta_outcome:
                     scores["TADDA"].append(value[calib]["tadda_score"])
 
@@ -659,8 +662,6 @@ for model in models_d_t2:
         with open(path_out, "w") as f:
             f.write(tex)
         print(f"Wrote scores table to {path_out}.")
-
-
 
 
 df = df_pred_t3
