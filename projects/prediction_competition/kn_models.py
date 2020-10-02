@@ -509,7 +509,7 @@ for model in models:
 	
 df = df.loc[df.in_africa==1]
 
-df_save = df
+#df_save = df
 
 for model in models_t2:
     df_predictions = model.predict(df)
@@ -521,8 +521,8 @@ for model in models_t2:
     )
     df = assign_into_df(df, df_predictions)
 
-df_pred_t2 = df
-df = df_save
+#df_pred_t2 = df
+#df = df_save
 
 for model in models_d_t2:
     df_predictions = model.predict(df)
@@ -534,36 +534,36 @@ for model in models_d_t2:
     )
     df = assign_into_df(df, df_predictions)
 	
-df_pred_d_t2 = df
-df = df_save
+#df_pred_d_t2 = df
+#df = df_save
 
 
-for model in models_t3:
-    df_predictions = model.predict(df)
-    df = assign_into_df(df, df_predictions)
-    df_predictions = model.predict_calibrated(
-        df=df,
-        period_calib = period_calib_t3,
-        period_test = period_test_t3
-    )
-    df = assign_into_df(df, df_predictions)
+#for model in models_t3:
+#    df_predictions = model.predict(df)
+#    df = assign_into_df(df, df_predictions)
+#    df_predictions = model.predict_calibrated(
+#        df=df,
+#        period_calib = period_calib_t3,
+#        period_test = period_test_t3
+#    )
+#    df = assign_into_df(df, df_predictions)
 
-df_pred_t3 = df
-df = df_save
+#df_pred_t3 = df
+#df = df_save
 
 
-for model in models_d_t3:
-    df_predictions = model.predict(df)
-    df = assign_into_df(df, df_predictions)
-    df_predictions = model.predict_calibrated(
-        df=df,
-        period_calib = period_calib_t3,
-        period_test = period_test_t3
-    )
-    df = assign_into_df(df, df_predictions)
+#for model in models_d_t3:
+#    df_predictions = model.predict(df)
+#    df = assign_into_df(df, df_predictions)
+#    df_predictions = model.predict_calibrated(
+#        df=df,
+#        period_calib = period_calib_t3,
+#        period_test = period_test_t3
+#    )
+#    df = assign_into_df(df, df_predictions)
 	
-df_pred_d_t3 = df
-df = df_save
+#df_pred_d_t3 = df
+#df = df_save
 
 for model in models:
     model.save()
@@ -572,14 +572,14 @@ for model in models:
     model.evaluate(df_pred_t2)
 for model in models:
     model.evaluate(df_pred_d_t2)
-for model in models:
-    model.evaluate(df_pred_t3)
-for model in models:
-    model.evaluate(df_pred_d_t3)
+#for model in models:
+#    model.evaluate(df_pred_t3)
+#for model in models:
+#    model.evaluate(df_pred_d_t3)
 	
 partition = "test"
 
-df = df_pred_t2
+
 for model in models_t2:
     for calib in ["uncalibrated", "calibrated"]:
         scores = {
