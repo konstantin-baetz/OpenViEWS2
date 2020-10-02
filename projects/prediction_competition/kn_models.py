@@ -504,8 +504,8 @@ models = models_t2 + models_d_t2 + models_t3 + models_d_t3
 
 
 # Train all models
-for model in models:
-    model.fit_estimators(df)
+#for model in models:
+#    model.fit_estimators(df)
 	
 df = df.loc[df.in_africa==1]
 
@@ -569,9 +569,9 @@ for model in models:
     model.save()
 
 for model in models:
-    model.evaluate(df_pred_t2)
-for model in models:
-    model.evaluate(df_pred_d_t2)
+    model.evaluate(df)
+#for model in models:
+#    model.evaluate(df_pred_d_t2)
 #for model in models:
 #    model.evaluate(df_pred_t3)
 #for model in models:
