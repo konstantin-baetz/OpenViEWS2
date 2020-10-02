@@ -400,7 +400,7 @@ model_0_t3 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_m0_t3,
     steps = steps,
-    periods = periods_t31,
+    periods = periods_t3,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
