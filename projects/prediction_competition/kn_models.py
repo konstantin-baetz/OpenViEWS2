@@ -574,6 +574,7 @@ for model in models:
 
 
 for model in models:
+    model._get_feature_importances()
     fi_cm = featimp_by_steps(
         model=model,
         steps=steps, 
