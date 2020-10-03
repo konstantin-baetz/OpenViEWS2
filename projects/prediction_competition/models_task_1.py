@@ -142,7 +142,7 @@ period_true_t4 = api.Period(
 
 periods_t4 = [period_calib_t4, period_true_t4]
 
-steps = [1,2,3,4,5,6,7]
+steps = [1,2,3,4,5,6]
 
 
 benchmark_features = [
