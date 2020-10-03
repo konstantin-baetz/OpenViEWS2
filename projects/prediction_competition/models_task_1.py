@@ -1034,7 +1034,7 @@ model_0 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_0,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
@@ -1045,7 +1045,7 @@ model_1 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_1,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
@@ -1056,7 +1056,7 @@ model_2 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_2,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags = ["sb"]
@@ -1067,7 +1067,7 @@ model_3 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_3,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
@@ -1079,7 +1079,7 @@ model_d0 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_0,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
@@ -1091,7 +1091,7 @@ model_d1 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_1,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
@@ -1103,7 +1103,7 @@ model_d2 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_2,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
@@ -1115,7 +1115,7 @@ model_d3 = api.Model(
     col_outcome = "ged_dummy_sb",
     cols_features = features_3,
     steps = steps,
-    periods = periods,
+    periods = periods_t4,
     outcome_type = "real",
     estimator = RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
@@ -1159,8 +1159,8 @@ for model in models:
 for model in models:
     model.evaluate(df)
 	
-prediction_data = df.loc[490:495]
-prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4.csv")
+#prediction_data = df.loc[490:495]
+#prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4.csv")
 #prediction_data = prediction_data.filter(regex = (model|_id))
 #print(shape(prediction_data))
 #prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_short_delta.csv")
