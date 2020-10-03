@@ -127,22 +127,22 @@ periods = [period_calib_t1, period_true_t1]
 period_calib_t4 = api.Period(
     name="calib", 
     train_start=121,   # 1990.01
-    train_end=488,     # 2020.08
-    predict_start=482, # 2020.02
-    predict_end=488,   # 2020.08
+    train_end=484,     # 2020.08
+    predict_start=482, # 2020.04
+    predict_end=484,   # 2020.08
 )
 period_true_t4 = api.Period(
     name="true",
     train_start=121,   # 1990.01
-    train_end=488,     # 2020.08
-    predict_start=482, # 2020.02
+    train_end=484,     # 2020.08
+    predict_start=485, # 2020.04
     predict_end=488,   # 2020.08
 )
 
 
 periods_t4 = [period_calib_t4, period_true_t4]
 
-steps = [1,2,3,4,5,6]
+steps = [1,2]
 
 
 benchmark_features = [
@@ -1014,8 +1014,6 @@ survey_variables_old = [
 
 survey_variables = [
     "sur_hhi"]
-
-single_variable = ["time_since_splag_1_1_acled_dummy_ns"]
 
 features_0 = basic_features + mdums + cdums
 features_1 = benchmark_features
