@@ -525,6 +525,8 @@ for model in models:
 
 for model in models:
     model.save()
+prediction_data = df.loc[445:480]
+prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2.csv")
 
 for model in models:
     model.evaluate(df)
