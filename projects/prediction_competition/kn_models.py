@@ -112,7 +112,7 @@ period_test_t3 = api.Period(
 )
 periods_t3 = [period_calib_t3, period_test_t3]
 
-steps = [1, 2, 3, 4, 5, 6]
+steps = [1, 2, 3, 4, 5, 6, 7]
 
 
 basic_features = [
@@ -501,7 +501,7 @@ all_models = models_t1 + models_d_t1 + models_t2 + models_d_t2 + models_t3 + mod
 #To chose which models to run, pick out of the above list:
 
 #models = models_t2 + models_d_t2 + models_t3 + models_d_t3
-models =  models_d_t2
+models =  models_t2
 
 # Train all models
 #for model in models:
@@ -526,7 +526,7 @@ for model in models:
 for model in models:
     model.save()
 prediction_data = df.loc[445:480]
-prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2_delta.csv")
+prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2.csv")
 
 for model in models:
     model.evaluate(df)
