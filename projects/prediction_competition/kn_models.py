@@ -502,8 +502,8 @@ all_models = models_t1 + models_d_t1 + models_t2 + models_d_t2 + models_t3 + mod
 
 #models = models_t2 + models_d_t2 + models_t3 + models_d_t3
 
-models =  models_t2
-#models =  models_d_t2
+#models =  models_t2
+models =  models_d_t2
 #models =  models_t3
 #models =  models_d_t3
 
