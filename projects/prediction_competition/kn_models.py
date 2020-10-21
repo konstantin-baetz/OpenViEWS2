@@ -500,8 +500,13 @@ models_d_t3 = [model_d0_t3, model_d1_t3, model_d2_t3]
 all_models = models_t1 + models_d_t1 + models_t2 + models_d_t2 + models_t3 + models_d_t3
 #To chose which models to run, pick out of the above list:
 
-models = models_t2 + models_d_t2 + models_t3 + models_d_t3
-#models =  models_t2
+#models = models_t2 + models_d_t2 + models_t3 + models_d_t3
+
+models =  models_t2
+#models =  models_d_t2
+#models =  models_t3
+#models =  models_d_t3
+
 
 # Train all models
 for model in models:
