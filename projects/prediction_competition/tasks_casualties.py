@@ -29,7 +29,7 @@ log = logging.getLogger(__name__)
 
 # set global variables for choice of models and time structure
 testing_mode = True
-task = 1
+task = 4
 delta_models = False
 level = "cm"
 
@@ -113,6 +113,21 @@ period_test_t3 = api.Period(
     predict_end=444,  # 2016.12
 )
 
+# Periods task 4:
+period_calib_t4 = api.Period(
+    name="calib",
+    train_start=121,  # 1990-01
+    train_end=482,  # 2010.12
+    predict_start=483,  # 2011.01
+    predict_end=486,  # 2013.12
+)
+period_test_t4 = api.Period(
+    name="test",
+    train_start=121,  # 1990-01
+    train_end=486,  # 2013.12
+    predict_start=487,  # 2014.01
+    predict_end=490,  # 2016.12
+)
 
 if task == 1:
     periods = [period_calib_t1, period_true_t1]
@@ -120,6 +135,8 @@ elif task == 2:
     periods = [period_calib_t2, period_test_t2]
 elif task == 3:
     periods = [period_calib_t3, period_test_t3]
+elif task == 4:
+    periods = [period_calib_t4, period_test_t4]
 
 if testing_mode:
     steps = [1]
@@ -194,18 +211,18 @@ survey_variables = [
 #define the features:
 features_m0 = basic_features
 
-if task == 1:
+if task == 1 or task == 2:
     features_m1 = basic_features + structural_variables + corona_variables
 else:
     features_m1 = basic_features + structural_variables
 
-if task == 1:
+if task == 1 or task == 2:
     features_m2 = basic_features + structural_variables + corona_variables + political_variables
 else:
     features_m2 = basic_features + structural_variables + political_variables
 
-if task == 1:
-    features_m3 = basic_features + structural_variables + corona_variables + political_variables + survey_variables
+if task == 1 or task == 2:
+    features_m3 = basic_features + structural_variables + corona_variables + political_variables
 else:
     features_m3 = basic_features + structural_variables + political_variables + survey_variables
 
