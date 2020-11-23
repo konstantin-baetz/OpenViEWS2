@@ -328,7 +328,7 @@ if delta_models:
     models = [model_d0, model_d1, model_d2, model_d3]
 else:
     models = [model_0, model_1, model_2, model_3]
-models = model_2
+models = [model_2]
 
 
 # Train all models
