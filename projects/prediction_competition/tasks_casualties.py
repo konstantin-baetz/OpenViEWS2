@@ -328,6 +328,8 @@ if delta_models:
     models = [model_d0, model_d1, model_d2, model_d3]
 else:
     models = [model_0, model_1, model_2, model_3]
+models = model_2
+
 
 # Train all models
 for model in models:
@@ -357,7 +359,8 @@ elif task == 2:
 elif task == 3:
     prediction_data = df.loc[490:495]
 
-prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2.csv")
+if task < 4:
+    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2.csv")
 
 for model in models:
     model.evaluate(df)
