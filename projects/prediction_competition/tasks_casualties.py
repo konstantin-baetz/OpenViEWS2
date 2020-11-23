@@ -28,8 +28,8 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # set global variables for choice of models and time structure
-
-task = 3
+testing_mode = True
+task = 2
 delta_models = False
 level = "cm"
 
@@ -121,7 +121,10 @@ elif task == 2:
 elif task == 3:
     periods = [period_calib_t3, period_test_t3]
 
-steps = [1]
+if testing_mode:
+    steps = [1]
+else:
+    steps = [1, 2, 3, 4, 5, 6, 7]
 
 basic_features = [
     'splag_1_1_acled_count_ns',
@@ -189,11 +192,23 @@ survey_variables = [
     "sur_hhi"]
 
 #define the features:
-
 features_m0 = basic_features
-features_m1 = basic_features + structural_variables + corona_variables
-features_m2 = basic_features + structural_variables + corona_variables + political_variables
-features_m3 = basic_features + structural_variables + corona_variables + political_variables + survey_variables
+
+if task == 1:
+    features_m1 = basic_features + structural_variables + corona_variables
+else:
+    features_m1 = basic_features + structural_variables
+
+if task == 1:
+    features_m2 = basic_features + structural_variables + corona_variables + political_variables
+else:
+    features_m2 = basic_features + structural_variables + political_variables
+
+if task == 1:
+    features_m3 = basic_features + structural_variables + corona_variables + political_variables + survey_variables
+else:
+    features_m3 = basic_features + structural_variables + political_variables + survey_variables
+
 
 #number of estimator
 estimators = 200
