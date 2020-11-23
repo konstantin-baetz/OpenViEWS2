@@ -29,7 +29,7 @@ log = logging.getLogger(__name__)
 
 # set global variables for choice of models and time structure
 
-task = 2
+task = 3
 delta_models = False
 level = "cm"
 
@@ -121,7 +121,7 @@ elif task == 2:
 elif task == 3:
     periods = [period_calib_t3, period_test_t3]
 
-steps = [1, 2, 3, 4, 5, 6, 7]
+steps = [1]
 
 basic_features = [
     'splag_1_1_acled_count_ns',
