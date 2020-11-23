@@ -28,7 +28,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # set global variables for choice of models and time structure
-testing_mode = True
+testing_mode = False
 task = 4
 delta_models = False
 level = "cm"
@@ -217,7 +217,7 @@ else:
     features_m1 = basic_features + structural_variables
 
 if task == 1 or task == 2:
-    features_m2 = basic_features + structural_variables + corona_variables + political_variables
+    features_m2 = basic_features + structural_variables + corona_variables
 else:
     features_m2 = basic_features + structural_variables + political_variables
 
