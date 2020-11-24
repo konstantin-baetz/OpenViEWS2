@@ -207,21 +207,17 @@ survey_variables = [
     "sur_pos_std",
     "sur_pos_std_pw",
     "sur_hhi"]
-
 #define the features:
 features_m0 = basic_features
-
-if task == 1 or task == 2:
+if task == 1 or task == 4:
     features_m1 = basic_features + structural_variables + corona_variables
 else:
     features_m1 = basic_features + structural_variables
-
-if task == 1 or task == 2:
+if task == 1 or task == 4:
     features_m2 = basic_features + structural_variables + corona_variables + political_variables
 else:
     features_m2 = basic_features + structural_variables + political_variables
-
-if task == 1 or task == 2:
+if task == 1 or task == 4:
     features_m3 = basic_features + structural_variables + corona_variables + political_variables
 else:
     features_m3 = basic_features + structural_variables + political_variables
