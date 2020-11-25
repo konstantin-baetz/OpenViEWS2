@@ -28,7 +28,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # set global variables for choice of models and time structure
-testing_mode = True
+testing_mode = False
 task = 4
 delta_models = False
 level = "cm"
