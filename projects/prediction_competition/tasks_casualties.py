@@ -28,7 +28,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 # set global variables for choice of models and time structure
-testing_mode = False
+testing_mode = True
 task = 4
 delta_models = False
 level = "cm"
@@ -208,20 +208,19 @@ survey_variables = [
     "sur_pos_std_pw",
     "sur_hhi"]
 #define the features:
-features_m0 = basic_features
+features_m0 = basic_features + political_variables
 if task == 1 or task == 4:
     features_m1 = basic_features + structural_variables + corona_variables
-else:
-    features_m1 = basic_features + structural_variables
-if task == 1 or task == 4:
     features_m2 = basic_features + structural_variables + corona_variables + political_variables
-else:
-    features_m2 = basic_features + structural_variables + political_variables
-if task == 1 or task == 4:
     features_m3 = basic_features + structural_variables + corona_variables + political_variables
-else:
+elif task == 2:
+    features_m1 = basic_features + structural_variables
+    features_m2 = basic_features + structural_variables + political_variables
     features_m3 = basic_features + structural_variables + political_variables
-
+elif task == 3:
+    features_m1 = basic_features + structural_variables
+    features_m2 = basic_features + structural_variables + political_variables
+    features_m3 = basic_features + structural_variables + political_variables + survey_variables
 
 #number of estimator
 estimators = 200
@@ -321,9 +320,9 @@ model_d3 = api.Model(
 )
 
 if delta_models:
-    models = [model_d0, model_d1, model_d2, model_d3]
+    models = [model_d0, model_d1, model_d2]
 else:
-    models = [model_0, model_1, model_2, model_3]
+    models = [model_0, model_1, model_2]
 #models = [model_2]
 
 
@@ -334,14 +333,15 @@ for model in models:
 df = df.loc[df.in_africa == 1]
 
 # df_save = df
-
+period_calib = periods[0]
+period_test = periods[1]
 for model in models:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
     df_predictions = model.predict_calibrated(
         df=df,
-        period_calib=period_calib_t3,
-        period_test=period_test_t3
+        period_calib=period_calib,
+        period_test=period_test
     )
     df = assign_into_df(df, df_predictions)
 
@@ -350,13 +350,16 @@ for model in models:
 
 if task == 1:
     prediction_data = df.loc[403:444]
+    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
 elif task == 2:
     prediction_data = df.loc[445:480]
+    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2.csv")
 elif task == 3:
     prediction_data = df.loc[490:495]
-
-if task < 4:
-    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2.csv")
+    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t3.csv")
+elif task == 4:
+    prediction_data = df.loc[490:495]
+    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4.csv")
 
 for model in models:
     model.evaluate(df)
