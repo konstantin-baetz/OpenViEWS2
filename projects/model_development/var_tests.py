@@ -32,10 +32,29 @@ path = "~/OpenViEWS2/storage/data/datasets/manual.parquet"  # change to your pat
 cm_global_imp_0 = io.parquet_to_df(path)
 df = cm_global_imp_0
 
+df_mdums = pd.get_dummies(df["month"], prefix="mdum")
+df_ydums = pd.get_dummies(df["year"], prefix="ydum")
+
+df = df.join(df_mdums)
+df = df.join(df_ydums)
+
+konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory=False)
+# konstanz_df.head()
+list(konstanz_df.columns)
+# konstanz_df.index
+
+konstanz_df = konstanz_df.set_index(["month_id", "country_id"])
+df = df.join(konstanz_df)
+cdums = sorted([col for col in df.columns if "cdum" in col], key=lambda x: int(x.split("_")[1]))
+mdums = sorted([col for col in df.columns if "mdum" in col], key=lambda x: int(x.split("_")[1]))
+ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x.split("_")[1]))
+
+testing_sample = df.loc[480:495]
+
 vars = list(df.columns.values)
 print(*vars, sep = "\n")
 #var = tlag_8_ged_dummy_sb
-if 'imfweo_bca_ngdpd_tmin1' in df.columns: 
+if 'kn_relative_age' in df.columns:
     print("variable exists. we good.")
 else:
     print("variable does not exist. probably a problem.")
