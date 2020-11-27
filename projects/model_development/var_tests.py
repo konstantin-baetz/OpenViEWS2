@@ -1,4 +1,3 @@
-
 import sys
 import os
 import logging
@@ -28,6 +27,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 from views.utils import io
+
 path = "~/OpenViEWS2/storage/data/datasets/manual.parquet"  # change to your path
 cm_global_imp_0 = io.parquet_to_df(path)
 df = cm_global_imp_0
@@ -51,10 +51,20 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x
 
 testing_sample = df.loc[480:495]
 
-vars = list(df.columns.values)
-print(*vars, sep = "\n")
-#var = tlag_8_ged_dummy_sb
-if 'kn_relative_age' in df.columns:
-    print("variable exists. we good.")
-else:
-    print("variable does not exist. probably a problem.")
+#vars = list(df.columns.values)
+#print(*vars, sep="\n")
+# var = tlag_8_ged_dummy_sb
+
+vars = ["reign_anticipation",
+    "reign_couprisk",
+    "reign_delayed",
+    "kn_relative_age",
+    "kn_leader_age"]
+
+for var in vars:
+    if var in df.columns:
+        print(var)
+        print("variable exists. we good.")
+    else:
+        print(var)
+        print("variable does not exist. probably a problem.")
