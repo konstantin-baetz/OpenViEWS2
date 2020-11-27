@@ -57,7 +57,7 @@ testing_sample = df.loc[480:495]
 
 df.dropna(
     axis=1,
-    how='all',
+    how='any',
     thresh=None,
     subset=None,
     inplace=True
