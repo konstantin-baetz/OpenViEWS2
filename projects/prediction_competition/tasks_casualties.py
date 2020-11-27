@@ -34,7 +34,7 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
 testing_mode = False
-task = 2
+task = 3
 delta_models = False
 level = "cm"
 
@@ -232,7 +232,7 @@ estimators = 200
 
 #task 1, normal models
 model_0 = api.Model(
-    name="basic_model",
+    name=" basic_model ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m0,
     steps=steps,
@@ -243,7 +243,7 @@ model_0 = api.Model(
 )
 
 model_1 = api.Model(
-    name="structural_model",
+    name=" structural_model ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m1,
     steps=steps,
@@ -254,7 +254,7 @@ model_1 = api.Model(
 )
 
 model_2 = api.Model(
-    name="Model_with_elections",
+    name=" Model_with_elections ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m2,
     steps=steps,
@@ -265,7 +265,7 @@ model_2 = api.Model(
 )
 
 model_3 = api.Model(
-    name="model_with_survey",
+    name=" model_with_survey ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m3,
     steps=steps,
@@ -277,7 +277,7 @@ model_3 = api.Model(
 #task 1, delta models
 
 model_d0 = api.Model(
-    name="model_d0",
+    name=" model_d0 ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m0,
     steps=steps,
@@ -289,7 +289,7 @@ model_d0 = api.Model(
 )
 
 model_d1 = api.Model(
-    name="structural_model",
+    name=" structural_model ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m1,
     steps=steps,
@@ -301,7 +301,7 @@ model_d1 = api.Model(
 )
 
 model_d2 = api.Model(
-    name="Model_with_elections",
+    name=" Model_with_elections ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m2,
     steps=steps,
@@ -313,7 +313,7 @@ model_d2 = api.Model(
 )
 
 model_d3 = api.Model(
-    name="model_with_survey",
+    name=" model_with_survey ",
     col_outcome="ln_ged_best_sb",
     cols_features=features_m3,
     steps=steps,
