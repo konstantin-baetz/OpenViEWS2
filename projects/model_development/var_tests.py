@@ -55,6 +55,14 @@ testing_sample = df.loc[480:495]
 #print(*vars, sep="\n")
 # var = tlag_8_ged_dummy_sb
 
+df.dropna(
+    axis=1,
+    how='all',
+    thresh=None,
+    subset=None,
+    inplace=True
+)
+
 vars = ["reign_anticipation",
     "reign_couprisk",
     "reign_delayed",
