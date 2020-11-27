@@ -29,12 +29,12 @@ log = logging.getLogger(__name__)
 
 # Do you wish to fetch the latest public data? If so, change False to True and run this cell
 # Cells below will fail if this is not run if you haven't imported data yourself yet.
-if True:
+if False:
     path_zip = views.apps.data.public.fetch_latest_zip_from_website(path_dir_destination=views.DIR_SCRATCH)
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
-testing_mode = True
-task = 4
+testing_mode = False
+task = 1
 delta_models = False
 level = "cm"
 
@@ -328,7 +328,8 @@ if delta_models:
     models = [model_d0, model_d1, model_d2]
 else:
     models = [model_0, model_1, model_2]
-#models = [model_2]
+
+models = [model_0, model_1, model_2]
 
 
 # Train all models
