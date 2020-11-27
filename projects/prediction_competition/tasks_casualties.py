@@ -34,7 +34,7 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
 testing_mode = False
-task = 1
+task = 2
 delta_models = False
 level = "cm"
 
