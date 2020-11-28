@@ -122,16 +122,16 @@ period_test_t3 = api.Period(
 period_calib_t4 = api.Period(
     name="calib",
     train_start=121,  # 1990-01
-    train_end=482,  # 2010.12
-    predict_start=483,  # 2011.01
-    predict_end=486,  # 2013.12
+    train_end=484,  # 2020.03
+    predict_start=484,  # 2020.04
+    predict_end=486,  # 2020.06
 )
 period_test_t4 = api.Period(
     name="test",
     train_start=121,  # 1990-01
-    train_end=486,  # 2013.12
-    predict_start=487,  # 2014.01
-    predict_end=490,  # 2016.12
+    train_end=486,  # 2020.06
+    predict_start=487,  # 2020.07
+    predict_end=490,  # 2020.10
 )
 
 if task == 1:
