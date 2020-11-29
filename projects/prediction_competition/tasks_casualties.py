@@ -134,6 +134,22 @@ period_test_t4 = api.Period(
     predict_end=490,  # 2020.10
 )
 
+# Periods task 5:
+period_calib_t5 = api.Period(
+    name="calib",
+    train_start=121,  # 1990-01
+    train_end=366,  # 2010.12
+    predict_start=367,  # 2011.01
+    predict_end=402,  # 2013.12
+)
+period_test_t5 = api.Period(
+    name="test",
+    train_start=121,  # 1990-01
+    train_end=402,  # 2013.12
+    predict_start=403,  # 2014.01
+    predict_end=444,  # 2016.12
+)
+
 if task == 1:
     periods = [period_calib_t1, period_true_t1]
 elif task == 2:
@@ -142,6 +158,8 @@ elif task == 3:
     periods = [period_calib_t3, period_test_t3]
 elif task == 4:
     periods = [period_calib_t4, period_test_t4]
+elif task == 5:
+    periods = [period_calib_t5, period_test_t5]
 
 if testing_mode == True:
     steps = [1]
@@ -149,6 +167,8 @@ else:
     if task < 4:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 4:
+        steps = [1, 2, 3, 4]
+    elif task == 5:
         steps = [1, 2, 3, 4]
 
 basic_features = [
@@ -224,11 +244,11 @@ if task == 1 or task == 4:
 elif task == 2:
     features_m1 = basic_features + structural_variables
     features_m2 = basic_features + structural_variables + political_variables
-    features_m3 = basic_features + structural_variables + political_variables
+    features_m3 = basic_features + structural_variables + political_variables + survey_variables
 elif task == 3:
     features_m1 = basic_features + structural_variables
     features_m2 = basic_features + structural_variables + political_variables
-    features_m3 = basic_features + structural_variables + political_variables + survey_variables
+    features_m3 = basic_features + structural_variables + political_variables
 
 #number of estimator
 estimators = 200
@@ -326,7 +346,7 @@ model_d3 = api.Model(
     delta_outcome=True,
     tags=["sb"]
 )
-if task == 3:
+if task == 2:
     if delta_models == True:
         models = [model_d0, model_d1, model_d2, model_d3]
     elif delta_models == False:
