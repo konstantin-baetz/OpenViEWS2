@@ -78,14 +78,14 @@ period_calib_t1 = api.Period(
     name="calib",
     train_start=121,   # 1990-01
     train_end=488,     # 2013.12
-    predict_start=482, # 2014.01
-    predict_end=488,   # 2016.12
+    predict_start=487, # 2014.01
+    predict_end=489,   # 2016.12
 )
 # True forecasts
 period_true_t1 = api.Period(
     name="true",
     train_start=121,   # 1990.01
-    train_end=488,     # 2020.08
+    train_end=489,     # 2020.08
     predict_start=490, # 2020.10
     predict_end=495,   # 2021.03
 )
