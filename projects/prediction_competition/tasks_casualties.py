@@ -34,8 +34,8 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
 testing_mode = False
-task = 3
-delta_models = False
+task = 1
+delta_models = True
 level = "cm"
 
 model_path = "./models/{sub}"
@@ -143,10 +143,13 @@ elif task == 3:
 elif task == 4:
     periods = [period_calib_t4, period_test_t4]
 
-if testing_mode:
+if testing_mode == True:
     steps = [1]
 else:
-    steps = [1, 2, 3, 4, 5, 6, 7]
+    if task < 4:
+        steps = [1, 2, 3, 4, 5, 6, 7]
+    elif task == 4:
+        steps = [1, 2, 3, 4]
 
 basic_features = [
     'splag_1_1_acled_count_ns',
@@ -230,7 +233,7 @@ elif task == 3:
 #number of estimator
 estimators = 200
 
-#task 1, normal models
+#normal models
 model_0 = api.Model(
     name=" basic_model ",
     col_outcome="ln_ged_best_sb",
@@ -274,7 +277,7 @@ model_3 = api.Model(
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     tags=["sb"]
 )
-#task 1, delta models
+#delta models
 
 model_d0 = api.Model(
     name=" model_d0 ",
@@ -324,12 +327,12 @@ model_d3 = api.Model(
     tags=["sb"]
 )
 
-if delta_models:
+if delta_models == True:
     models = [model_d0, model_d1, model_d2]
-else:
+elif delta_models == False:
     models = [model_0, model_1, model_2]
 
-models = [model_0, model_1, model_2]
+#models = [model_0, model_1, model_2]
 
 
 # Train all models
@@ -354,18 +357,33 @@ for model in models:
 for model in models:
     model.save()
 
-if task == 1:
-    prediction_data = df.loc[403:444]
-    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1.csv")
-elif task == 2:
-    prediction_data = df.loc[445:480]
-    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2.csv")
-elif task == 3:
-    prediction_data = df.loc[490:495]
-    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t3.csv")
-elif task == 4:
-    prediction_data = df.loc[490:495]
-    prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4.csv")
+if delta_models == True:
+    if task == 1:
+        prediction_data = df.loc[490:495]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_delta_cas.csv")
+    elif task == 2:
+        prediction_data = df.loc[445:480]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2_delta_cas.csv")
+    elif task == 3:
+        prediction_data = df.loc[403:444]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t3_delta_cas.csv")
+    elif task == 4:
+        prediction_data = df.loc[487:490]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4_delta_cas.csv")
+elif delta_models == False:
+    if task == 1:
+        prediction_data = df.loc[490:495]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_cas.csv")
+    elif task == 2:
+        prediction_data = df.loc[445:480]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t2_cas.csv")
+    elif task == 3:
+        prediction_data = df.loc[403:444]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t3_cas.csv")
+    elif task == 4:
+        prediction_data = df.loc[487:490]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4_cas.csv")
+
 
 for model in models:
     model.evaluate(df)
