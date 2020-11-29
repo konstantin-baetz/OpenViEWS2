@@ -423,7 +423,7 @@ for model in models:
         tex = meta + tex
         path_out = os.path.join(
             out_paths["evaluation"],
-            f"{model.name}_{level}_{calib}_scores.tex"
+            f"{model.name}_{level}_{calib}_t{task}scores.tex"
         )
         with open(path_out, "w") as f:
             f.write(tex)
