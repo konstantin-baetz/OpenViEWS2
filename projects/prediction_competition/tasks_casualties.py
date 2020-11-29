@@ -37,7 +37,7 @@ testing_mode = False
 task = 2
 delta_models = True
 level = "cm"
-if delta:
+if delta_models:
     delta_sig = "DELTA"
 else:
     delta_sig = "NORM"
