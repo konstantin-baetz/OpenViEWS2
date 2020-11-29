@@ -49,15 +49,15 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key=lambda x: int(x
 mdums = sorted([col for col in df.columns if "mdum" in col], key=lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x.split("_")[1]))
 
-testing_sample = df.loc[480:495]
+testing_sample = df.loc[490:495]
 
 #vars = list(df.columns.values)
 #print(*vars, sep="\n")
 # var = tlag_8_ged_dummy_sb
 
-df.dropna(
+testing_sample.dropna(
     axis=1,
-    how='any',
+    how='all',
     thresh=None,
     subset=None,
     inplace=True
