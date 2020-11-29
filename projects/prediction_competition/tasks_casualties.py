@@ -34,7 +34,7 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
 testing_mode = False
-task = 2
+task = 3
 delta_models = True
 level = "cm"
 
@@ -326,11 +326,16 @@ model_d3 = api.Model(
     delta_outcome=True,
     tags=["sb"]
 )
-
-if delta_models == True:
-    models = [model_d0, model_d1, model_d2]
-elif delta_models == False:
-    models = [model_0, model_1, model_2]
+if task == 3:
+    if delta_models == True:
+        models = [model_d0, model_d1, model_d2, model_d3]
+    elif delta_models == False:
+        models = [model_0, model_1, model_2, model_3]
+else:
+    if delta_models == True:
+        models = [model_d0, model_d1, model_d2]
+    elif delta_models == False:
+        models = [model_0, model_1, model_2]
 
 #models = [model_0, model_1, model_2]
 
