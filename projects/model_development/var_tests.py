@@ -33,7 +33,7 @@ if False:
     path_zip = views.apps.data.public.fetch_latest_zip_from_website(path_dir_destination=views.DIR_SCRATCH)
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
-testing_mode = False
+testing_mode = True
 task = 4
 delta_models = True
 level = "cm"
@@ -171,7 +171,7 @@ else:
     if task < 4:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 4:
-        steps = [1, 2, 3]
+        steps = [1, 2, 3, 4]
     elif task == 5:
         steps = [1, 2, 3, 4]
 
