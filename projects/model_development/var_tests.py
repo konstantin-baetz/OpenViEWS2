@@ -56,13 +56,7 @@ testing_sample = testing_sample.copy()
 #print(*vars, sep="\n")
 # var = tlag_8_ged_dummy_sb
 
-testing_sample.dropna(
-    axis=1,
-    how='any',
-    thresh=None,
-    subset=None,
-    inplace=True
-)
+
 
 vars = ["reign_anticipation",
     "reign_couprisk",
@@ -93,7 +87,7 @@ vars = ["reign_anticipation",
     "sur_hhi"]
 
 
-df.drop(
+testing_sample.drop(
     labels=vars,
     axis=1,
     index=None,
