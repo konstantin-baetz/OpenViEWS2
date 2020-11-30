@@ -165,7 +165,7 @@ elif task == 4:
 elif task == 5:
     periods = [period_calib_t5, period_test_t5]
 
-if testing_mode == True:
+if testing_mode:
     steps = [1]
 else:
     if task < 4:
@@ -239,6 +239,7 @@ survey_variables = [
     "sur_pos_std",
     "sur_pos_std_pw",
     "sur_hhi"]
+
 #define the features:
 features_m0 = basic_features + political_variables
 if task == 1 or task == 4:
