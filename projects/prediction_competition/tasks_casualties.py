@@ -78,8 +78,8 @@ period_calib_t1 = api.Period(
     name="calib",
     train_start=121,   # 1990-01
     train_end=489,     # 2013.12
-    predict_start=483,  # 2014.01
-    predict_end=489,   # 2016.12
+    predict_start=485,  # 2014.01
+    predict_end=488,   # 2016.12
 )
 # True forecasts
 period_true_t1 = api.Period(
@@ -171,9 +171,9 @@ else:
     if task < 4:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 4:
-        steps = [1, 2, 3, 4]
+        steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 5:
-        steps = [1, 2, 3, 4]
+        steps = [1, 2, 3, 4, 5]
 
 basic_features = [
     'splag_1_1_acled_count_ns',
@@ -378,8 +378,6 @@ print("task:")
 print(task)
 print("steps:")
 print(steps)
-print("models")
-print(models)
 
 # Train all models
 for model in models:
@@ -390,6 +388,10 @@ df = df.loc[df.in_africa == 1]
 # df_save = df
 period_calib = periods[0]
 period_test = periods[1]
+
+print("periods:")
+print(period_calib)
+print(period_test)
 for model in models:
     df_predictions = model.predict(df)
     df = assign_into_df(df, df_predictions)
@@ -403,7 +405,7 @@ for model in models:
 for model in models:
     model.save()
 
-if delta_models == True:
+if delta_models:
     if task == 1:
         prediction_data = df.loc[490:495]
         prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_delta_cas.csv")
@@ -416,7 +418,7 @@ if delta_models == True:
     elif task == 4:
         prediction_data = df.loc[487:490]
         prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4_delta_cas.csv")
-elif delta_models == False:
+else:
     if task == 1:
         prediction_data = df.loc[490:495]
         prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t1_cas.csv")
