@@ -33,8 +33,8 @@ if False:
     path_zip = views.apps.data.public.fetch_latest_zip_from_website(path_dir_destination=views.DIR_SCRATCH)
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
-testing_mode = False
-task = 1
+testing_mode = True
+task = 4
 delta_models = True
 level = "cm"
 if delta_models:
@@ -127,14 +127,14 @@ period_calib_t4 = api.Period(
     name="calib",
     train_start=121,  # 1990-01
     train_end=484,  # 2020.03
-    predict_start=484,  # 2020.04
-    predict_end=486,  # 2020.06
+    predict_start=485,  # 2020.04
+    predict_end=487,  # 2020.06
 )
 period_test_t4 = api.Period(
     name="test",
     train_start=121,  # 1990-01
-    train_end=486,  # 2020.06
-    predict_start=487,  # 2020.07
+    train_end=487,  # 2020.06
+    predict_start=488,  # 2020.07
     predict_end=490,  # 2020.10
 )
 
@@ -165,7 +165,7 @@ elif task == 4:
 elif task == 5:
     periods = [period_calib_t5, period_test_t5]
 
-if testing_mode == True:
+if testing_mode:
     steps = [1]
 else:
     if task < 4:
@@ -239,6 +239,7 @@ survey_variables = [
     "sur_pos_std",
     "sur_pos_std_pw",
     "sur_hhi"]
+
 #define the features:
 features_m0 = basic_features + political_variables
 if task == 1 or task == 4:
@@ -368,6 +369,12 @@ else:
 
 #models = [model_0, model_1, model_2]
 
+print("task:")
+print(task)
+print("steps:")
+print(steps)
+print("models")
+print(models)
 
 # Train all models
 for model in models:
