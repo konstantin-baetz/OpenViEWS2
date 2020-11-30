@@ -92,10 +92,22 @@ vars = ["reign_anticipation",
     "sur_pos_std_pw",
     "sur_hhi"]
 
+
+df.drop(
+    labels=vars,
+    axis=1,
+    index=None,
+    columns=None,
+    level=None,
+    inplace=True,
+    errors='raise'
+)
+
+
 for var in vars:
     if var in df.columns:
         print(var)
-        print("variable exists. we good.")
+        print("variable not missing, should not be problematic.")
     else:
         print(var)
-        print("variable does not exist. probably a problem.")
+        print("variable does not exist, probably a problem.")
