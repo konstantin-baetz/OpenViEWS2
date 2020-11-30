@@ -170,6 +170,8 @@ if testing_mode:
 else:
     if task < 4:
         steps = [1, 2, 3, 4, 5, 6, 7]
+    elif task == 1:
+        steps = [2, 3, 4, 5, 6, 7]
     elif task == 4:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 5:
