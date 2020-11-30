@@ -61,7 +61,7 @@ df_ydums = pd.get_dummies(df["year"], prefix="ydum")
 df = df.join(df_mdums)
 df = df.join(df_ydums)
 
-konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory=False)
+konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz_new.csv", low_memory=False)
 # konstanz_df.head()
 list(konstanz_df.columns)
 # konstanz_df.index
