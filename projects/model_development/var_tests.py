@@ -105,4 +105,4 @@ for var in vars:
         print(var)
         print("variable does not exist, probably a problem.")
 
-print(testing_sample["reign_anticipation"])
+print(testing_sample[["reign_anticipation", "kn_death_mil", "kn_case_mil", "kn_hosp_1k", "surkn_n_actors", "surkn_pow_var",]])
