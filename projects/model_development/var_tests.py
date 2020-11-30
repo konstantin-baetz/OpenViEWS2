@@ -88,7 +88,7 @@ vars = ["reign_anticipation",
     "xag3"]
 
 for v in vars:
-print(testing_sample['v'])
+    print(testing_sample['v'])
 
 testing_sample.drop(
     labels=vars,
