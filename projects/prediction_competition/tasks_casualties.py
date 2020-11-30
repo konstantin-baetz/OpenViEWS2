@@ -33,7 +33,7 @@ if False:
     path_zip = views.apps.data.public.fetch_latest_zip_from_website(path_dir_destination=views.DIR_SCRATCH)
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
-testing_mode = True
+testing_mode = False
 task = 4
 delta_models = True
 level = "cm"
@@ -133,8 +133,8 @@ period_calib_t4 = api.Period(
 period_test_t4 = api.Period(
     name="test",
     train_start=121,  # 1990-01
-    train_end=487,  # 2020.06
-    predict_start=488,  # 2020.07
+    train_end=486,  # 2020.06
+    predict_start=487,  # 2020.07
     predict_end=490,  # 2020.10
 )
 
