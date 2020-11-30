@@ -87,8 +87,6 @@ vars = ["reign_anticipation",
     "sur_hhi",
     "xag3"]
 
-for v in vars:
-    print(testing_sample['v'])
 
 testing_sample.drop(
     labels=vars,
@@ -110,4 +108,4 @@ for var in vars:
 
 
 for v in vars:
-print(testing_sample['v'])
+    print(testing_sample['v'])
