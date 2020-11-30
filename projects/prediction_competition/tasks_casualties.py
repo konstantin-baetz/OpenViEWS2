@@ -226,11 +226,6 @@ political_variables = [
     "kn_relative_age",
     "kn_leader_age"]
 
-political_variables_1 = [
-    "reign_anticipation",
-    "reign_couprisk",
-    "reign_delayed"]
-
 corona_variables = [
     "kn_death_mil",
     "kn_case_mil",
@@ -248,8 +243,8 @@ survey_variables = [
 features_m0 = basic_features + political_variables
 if task == 1 or task == 4:
     features_m1 = basic_features + structural_variables + corona_variables
-    features_m2 = basic_features + structural_variables + corona_variables + political_variables_1
-    features_m3 = basic_features + structural_variables + corona_variables + political_variables_1
+    features_m2 = basic_features + structural_variables + corona_variables + political_variables
+    features_m3 = basic_features + structural_variables + corona_variables + political_variables
 elif task == 2:
     features_m1 = basic_features + structural_variables
     features_m2 = basic_features + structural_variables + political_variables
@@ -360,6 +355,11 @@ if task == 2:
         models = [model_d0, model_d1, model_d2, model_d3]
     elif delta_models == False:
         models = [model_0, model_1, model_2, model_3]
+elif task == 1:
+    if delta_models == True:
+        models = [model_d0, model_d1]
+    elif delta_models == False:
+        models = [model_0, model_1]
 else:
     if delta_models == True:
         models = [model_d0, model_d1, model_d2]
