@@ -78,15 +78,15 @@ period_calib_t1 = api.Period(
     name="calib",
     train_start=121,   # 1990-01
     train_end=488,     # 2013.12
-    predict_start=487, # 2014.01
+    predict_start=487,  # 2014.01
     predict_end=489,   # 2016.12
 )
 # True forecasts
 period_true_t1 = api.Period(
     name="true",
     train_start=121,   # 1990.01
-    train_end=489,     # 2020.08
-    predict_start=490, # 2020.10
+    train_end=488,     # 2020.08
+    predict_start=490,  # 2020.10
     predict_end=495,   # 2021.03
 )
 
@@ -226,6 +226,11 @@ political_variables = [
     "kn_relative_age",
     "kn_leader_age"]
 
+political_variables_1 = [
+    "reign_anticipation",
+    "reign_couprisk",
+    "reign_delayed"]
+
 corona_variables = [
     "kn_death_mil",
     "kn_case_mil",
@@ -243,8 +248,8 @@ survey_variables = [
 features_m0 = basic_features + political_variables
 if task == 1 or task == 4:
     features_m1 = basic_features + structural_variables + corona_variables
-    features_m2 = basic_features + structural_variables + corona_variables + political_variables
-    features_m3 = basic_features + structural_variables + corona_variables + political_variables
+    features_m2 = basic_features + structural_variables + corona_variables + political_variables_1
+    features_m3 = basic_features + structural_variables + corona_variables + political_variables_1
 elif task == 2:
     features_m1 = basic_features + structural_variables
     features_m2 = basic_features + structural_variables + political_variables
