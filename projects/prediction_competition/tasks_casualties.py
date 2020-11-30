@@ -35,7 +35,7 @@ if False:
 # set global variables for choice of models and time structure
 testing_mode = False
 task = 2
-delta_models = False
+delta_models = True
 level = "cm"
 if delta_models:
     delta_sig = "DELTA"
@@ -353,9 +353,9 @@ model_d3 = api.Model(
 )
 if task == 2:
     if delta_models == True:
-        models = [model_d0, model_d1, model_d2, model_d3]
+        models = [model_d0, model_d1, model_d2]
     elif delta_models == False:
-        models = [model_0, model_1, model_2, model_3]
+        models = [model_0, model_1, model_2]
 elif task == 1:
     if delta_models == True:
         models = [model_d0, model_d1]
