@@ -49,7 +49,7 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key=lambda x: int(x
 mdums = sorted([col for col in df.columns if "mdum" in col], key=lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x.split("_")[1]))
 
-testing_sample  = df.loc[487:495]
+testing_sample = df.loc[487:495]
 
 testing_sample = testing_sample.copy()
 #vars = list(df.columns.values)
@@ -84,8 +84,11 @@ vars = ["reign_anticipation",
     "sur_pos_avg_pw",
     "sur_pos_std",
     "sur_pos_std_pw",
-    "sur_hhi"]
+    "sur_hhi",
+    "xag3"]
 
+for v in vars:
+print(testing_sample['v'])
 
 testing_sample.drop(
     labels=vars,
@@ -97,7 +100,6 @@ testing_sample.drop(
     errors='raise'
 )
 
-
 for var in vars:
     if var in df.columns:
         print(var)
@@ -105,3 +107,7 @@ for var in vars:
     else:
         print(var)
         print("variable does not exist, probably a problem.")
+
+
+for v in vars:
+print(testing_sample['v'])
