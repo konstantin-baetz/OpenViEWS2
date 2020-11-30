@@ -369,6 +369,12 @@ else:
 
 #models = [model_0, model_1, model_2]
 
+print("task:")
+print(task)
+print("steps:")
+print(steps)
+print("models")
+print(models)
 
 # Train all models
 for model in models:
