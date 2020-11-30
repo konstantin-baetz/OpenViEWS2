@@ -126,9 +126,9 @@ period_test_t3 = api.Period(
 period_calib_t4 = api.Period(
     name="calib",
     train_start=121,  # 1990-01
-    train_end=484,  # 2020.03
-    predict_start=485,  # 2020.04
-    predict_end=487,  # 2020.06
+    train_end=482,  # 2020.03
+    predict_start=483,  # 2020.04
+    predict_end=486,  # 2020.06
 )
 period_test_t4 = api.Period(
     name="test",
@@ -173,7 +173,7 @@ else:
     elif task == 4:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 5:
-        steps = [1, 2, 3, 4, 5]
+        steps = [1, 2, 3]
 
 basic_features = [
     'splag_1_1_acled_count_ns',
