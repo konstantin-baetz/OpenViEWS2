@@ -84,8 +84,7 @@ vars = ["reign_anticipation",
     "sur_pos_avg_pw",
     "sur_pos_std",
     "sur_pos_std_pw",
-    "sur_hhi",
-    "xag3"]
+    "sur_hhi"]
 
 
 testing_sample.drop(
