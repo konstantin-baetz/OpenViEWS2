@@ -244,7 +244,7 @@ survey_variables = [
 features_m0 = basic_features + political_variables
 if task == 1 or task == 4:
     features_m1 = basic_features + structural_variables + corona_variables
-    features_m2 = basic_features + structural_variables + corona_variables + political_variables
+    features_m2 = basic_features + structural_variables + political_variables
     features_m3 = basic_features + structural_variables + corona_variables + political_variables
 elif task == 2:
     features_m1 = basic_features + structural_variables
@@ -361,6 +361,11 @@ elif task == 1:
         models = [model_d0, model_d1]
     elif delta_models == False:
         models = [model_0, model_1]
+elif task == 4:
+    if delta_models == True:
+        models = [model_d0, model_d1, model_d2, model_d3]
+    elif delta_models == False:
+        models = [model_0, model_1, model_2, model_3]
 else:
     if delta_models == True:
         models = [model_d0, model_d1, model_d2]
