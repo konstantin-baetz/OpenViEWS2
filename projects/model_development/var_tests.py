@@ -56,7 +56,7 @@ testing_sample = testing_sample.copy()
 #print(*vars, sep="\n")
 # var = tlag_8_ged_dummy_sb
 
-
+testing_sample.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/test_vars.csv")
 
 vars = ["reign_anticipation",
     "reign_couprisk",
@@ -105,4 +105,4 @@ for var in vars:
         print(var)
         print("variable does not exist, probably a problem.")
 
-print(testing_sample[["reign_anticipation", "kn_death_mil", "kn_case_mil", "kn_hosp_1k", "surkn_n_actors", "surkn_pow_var",]])
+print(testing_sample[["reign_anticipation", "kn_death_mil", "kn_case_mil", "kn_hosp_1k", "surkn_n_actors", "surkn_pow_var"]])
