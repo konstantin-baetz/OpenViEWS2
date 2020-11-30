@@ -105,6 +105,4 @@ for var in vars:
         print(var)
         print("variable does not exist, probably a problem.")
 
-
-for v in vars:
-    print(testing_sample['v'])
+print(testing_sample["reign_anticipation"])
