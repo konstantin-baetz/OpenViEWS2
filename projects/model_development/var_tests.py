@@ -38,7 +38,7 @@ df_ydums = pd.get_dummies(df["year"], prefix="ydum")
 df = df.join(df_mdums)
 df = df.join(df_ydums)
 
-konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz.csv", low_memory=False)
+konstanz_df = pd.read_csv("~/OpenViEWS2/storage/data/konstanz/konstanz_new.csv", low_memory=False)
 # konstanz_df.head()
 list(konstanz_df.columns)
 # konstanz_df.index
@@ -49,13 +49,10 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key=lambda x: int(x
 mdums = sorted([col for col in df.columns if "mdum" in col], key=lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x.split("_")[1]))
 
-testing_sample = df.loc[487:495]
+testing_sample = df.loc[480:495]
 
 testing_sample = testing_sample.copy()
-#vars = list(df.columns.values)
-#print(*vars, sep="\n")
-# var = tlag_8_ged_dummy_sb
-
+testing_sample = testing_sample[["reign_anticipation", "kn_death_mil", "kn_case_mil", "kn_hosp_1k", "surkn_n_actors", "surkn_pow_var"]]
 testing_sample.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/test_vars.csv")
 
 vars = ["reign_anticipation",
@@ -105,4 +102,4 @@ for var in vars:
         print(var)
         print("variable does not exist, probably a problem.")
 
-print(testing_sample[["reign_anticipation", "kn_death_mil", "kn_case_mil", "kn_hosp_1k", "surkn_n_actors", "surkn_pow_var"]])
+testing_sample[["reign_anticipation", "kn_death_mil", "kn_case_mil", "kn_hosp_1k", "surkn_n_actors", "surkn_pow_var"]]
