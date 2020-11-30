@@ -77,8 +77,8 @@ ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x
 period_calib_t1 = api.Period(
     name="calib",
     train_start=121,   # 1990-01
-    train_end=488,     # 2013.12
-    predict_start=487,  # 2014.01
+    train_end=489,     # 2013.12
+    predict_start=483,  # 2014.01
     predict_end=489,   # 2016.12
 )
 # True forecasts
