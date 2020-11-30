@@ -168,14 +168,12 @@ elif task == 5:
 if testing_mode:
     steps = [1]
 else:
-    if task < 4:
+    if task == 2 or task == 3:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 1:
         steps = [2, 3, 4, 5, 6, 7]
     elif task == 4:
         steps = [1, 2, 3, 4, 5, 6, 7]
-    elif task == 5:
-        steps = [1, 2, 3]
 
 basic_features = [
     'splag_1_1_acled_count_ns',
