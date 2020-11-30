@@ -49,7 +49,7 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key=lambda x: int(x
 mdums = sorted([col for col in df.columns if "mdum" in col], key=lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x.split("_")[1]))
 
-testing_sample = df.loc[47:495]
+testing_sample = df.loc[447:495]
 
 #vars = list(df.columns.values)
 #print(*vars, sep="\n")
@@ -57,7 +57,7 @@ testing_sample = df.loc[47:495]
 
 testing_sample.dropna(
     axis=1,
-    how='all',
+    how='any',
     thresh=None,
     subset=None,
     inplace=True
