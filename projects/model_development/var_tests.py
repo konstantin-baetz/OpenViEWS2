@@ -49,7 +49,7 @@ cdums = sorted([col for col in df.columns if "cdum" in col], key=lambda x: int(x
 mdums = sorted([col for col in df.columns if "mdum" in col], key=lambda x: int(x.split("_")[1]))
 ydums = sorted([col for col in df.columns if "ydum" in col], key=lambda x: int(x.split("_")[1]))
 
-testing_sample  = df.loc[447:495]
+testing_sample  = df.loc[487:495]
 
 testing_sample = testing_sample.copy()
 #vars = list(df.columns.values)
