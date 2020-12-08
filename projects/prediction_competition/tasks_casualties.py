@@ -34,8 +34,8 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
 testing_mode = False
-task = 4
-delta_models = False
+task = 1
+delta_models = True
 level = "cm"
 if delta_models:
     delta_sig = "DELTA"
@@ -240,6 +240,11 @@ survey_variables = [
     "sur_pos_std_pw",
     "sur_hhi"]
 
+all_vars = basic_features + structural_variables + corona_variables + political_variables + survey_variables
+
+for var in all_vars:
+    df.loc[month_id >= 489 and pd.isnull(var), var] = 1
+
 #define the features:
 features_m0 = basic_features + political_variables
 if task == 1 or task == 4:
@@ -381,7 +386,8 @@ print(steps)
 
 # Train all models
 for model in models:
-    model.fit_estimators(df)
+    model.fit_estimators(df,
+                         populate_extras = False)
 
 df = df.loc[df.in_africa == 1]
 
