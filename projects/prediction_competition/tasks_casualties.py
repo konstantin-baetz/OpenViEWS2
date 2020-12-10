@@ -242,11 +242,11 @@ survey_variables = [
 
 all_vars = basic_features + structural_variables + corona_variables + political_variables + survey_variables
 
-df.loc[month_id >= 489 and pd.isnull(surkn_n_actors), var] = 1
+df.loc[df.month_id >= 489 and pd.isnull(df.surkn_n_actors), var] = 1
 
 
-#for var in all_vars:
-#    df.loc[month_id >= 489 and pd.isnull(var), var] = 1
+for var in all_vars:
+    df.loc[df.month_id >= 489 and pd.isnull(df.var), var] = 1
 
 #define the features:
 features_m0 = basic_features + political_variables
