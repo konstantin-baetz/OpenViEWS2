@@ -241,7 +241,7 @@ survey_variables = [
     "sur_hhi"]
 
 all_vars = basic_features + structural_variables + corona_variables + political_variables + survey_variables
-
+print(df.columns)
 df.loc[df.month_id >= 489 and pd.isnull(df.surkn_n_actors), var] = 1
 
 
