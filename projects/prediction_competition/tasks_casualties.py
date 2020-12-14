@@ -34,7 +34,7 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
 testing_mode = False
-task = 1
+task = 2
 delta_models = True
 level = "cm"
 if delta_models:
@@ -243,6 +243,7 @@ survey_variables = [
 all_vars = basic_features + structural_variables + corona_variables + political_variables + survey_variables
 print(df.columns)
 
+if task == 2:
 
 
 #for var in all_vars:
@@ -318,7 +319,7 @@ model_d0 = api.Model(
     cols_features=features_m0,
     steps=steps,
     periods=periods,
-    outcome_type="real",
+    outcome_type="prob",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
@@ -330,7 +331,7 @@ model_d1 = api.Model(
     cols_features=features_m1,
     steps=steps,
     periods=periods,
-    outcome_type="real",
+    outcome_type="prob",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
@@ -342,7 +343,7 @@ model_d2 = api.Model(
     cols_features=features_m2,
     steps=steps,
     periods=periods,
-    outcome_type="real",
+    outcome_type="prob",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
@@ -354,7 +355,7 @@ model_d3 = api.Model(
     cols_features=features_m3,
     steps=steps,
     periods=periods,
-    outcome_type="real",
+    outcome_type="prob",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
