@@ -472,7 +472,7 @@ class Model:
 
         def _predict_prob(estimator: Any, df_X: pd.DataFrame) -> Any:
             """ Get the predicted probability for the outcome=1 case """
-            return estimator.predict_prob(df_X)[:, 1]
+            return estimator.predict_proba(df_X)[:, 1]
 
         # Properly indexed NaN Series to hold predictions
         s_pred = pd.Series(
