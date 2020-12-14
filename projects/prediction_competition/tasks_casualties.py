@@ -243,7 +243,6 @@ survey_variables = [
 all_vars = basic_features + structural_variables + corona_variables + political_variables + survey_variables
 print(df.columns)
 
-if task == 2:
 
 
 #for var in all_vars:
@@ -251,6 +250,7 @@ if task == 2:
 
 #define the features:
 features_m0 = basic_features + political_variables
+
 if task == 1 or task == 4:
     features_m1 = basic_features + structural_variables + corona_variables
     features_m2 = basic_features + structural_variables + political_variables
