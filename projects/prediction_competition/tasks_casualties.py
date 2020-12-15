@@ -172,9 +172,11 @@ else:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 1:
         steps = [2, 3, 4, 5, 6, 7]
-    elif task == 4 or task == 5:
+    elif task == 4 :
         steps = [1, 2, 3, 4, 5, 6, 7]
-
+    elif task == 5:
+        steps = [1, 2]
+        
 basic_features = [
     'splag_1_1_acled_count_ns',
     'splag_1_1_acled_count_os',
