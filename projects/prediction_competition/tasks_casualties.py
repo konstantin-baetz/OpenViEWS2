@@ -34,7 +34,7 @@ if False:
     views.apps.data.public.import_tables_and_geoms(tables=views.TABLES, geometries=views.GEOMETRIES, path_zip=path_zip)
 # set global variables for choice of models and time structure
 testing_mode = False
-task = 2
+task = 5
 delta_models = True
 level = "cm"
 if delta_models:
@@ -142,16 +142,16 @@ period_test_t4 = api.Period(
 period_calib_t5 = api.Period(
     name="calib",
     train_start=121,  # 1990-01
-    train_end=366,  # 2010.12
-    predict_start=367,  # 2011.01
-    predict_end=402,  # 2013.12
+    train_end=475,  # 2019.09
+    predict_start=476,  # 2019.08
+    predict_end=481,  # 2020.01
 )
 period_test_t5 = api.Period(
     name="test",
     train_start=121,  # 1990-01
-    train_end=402,  # 2013.12
-    predict_start=403,  # 2014.01
-    predict_end=444,  # 2016.12
+    train_end=481,  # 2020.01
+    predict_start=482,  # 2020.02
+    predict_end=485,  # 2020.05
 )
 
 if task == 1:
@@ -172,7 +172,7 @@ else:
         steps = [1, 2, 3, 4, 5, 6, 7]
     elif task == 1:
         steps = [2, 3, 4, 5, 6, 7]
-    elif task == 4:
+    elif task == 4 or task == 5:
         steps = [1, 2, 3, 4, 5, 6, 7]
 
 basic_features = [
@@ -255,7 +255,7 @@ if task == 1 or task == 4:
     features_m1 = basic_features + structural_variables + corona_variables
     features_m2 = basic_features + structural_variables + political_variables
     features_m3 = basic_features + structural_variables + corona_variables + political_variables
-elif task == 2:
+elif task == 2 or task == 5:
     features_m1 = basic_features + structural_variables
     features_m2 = basic_features + structural_variables + political_variables
     features_m3 = basic_features + structural_variables + political_variables + survey_variables
@@ -263,6 +263,7 @@ elif task == 3:
     features_m1 = basic_features + structural_variables
     features_m2 = basic_features + structural_variables + political_variables
     features_m3 = basic_features + structural_variables + political_variables
+
 
 #number of estimator
 estimators = 200
@@ -319,7 +320,7 @@ model_d0 = api.Model(
     cols_features=features_m0,
     steps=steps,
     periods=periods,
-    outcome_type="prob",
+    outcome_type="real",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
@@ -331,7 +332,7 @@ model_d1 = api.Model(
     cols_features=features_m1,
     steps=steps,
     periods=periods,
-    outcome_type="prob",
+    outcome_type="real",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
@@ -343,7 +344,7 @@ model_d2 = api.Model(
     cols_features=features_m2,
     steps=steps,
     periods=periods,
-    outcome_type="prob",
+    outcome_type="real",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
@@ -355,7 +356,7 @@ model_d3 = api.Model(
     cols_features=features_m3,
     steps=steps,
     periods=periods,
-    outcome_type="prob",
+    outcome_type="real",
     estimator=RandomForestRegressor(n_jobs=-1, criterion="mse", n_estimators=estimators),
     delta_outcome=True,
     tags=["sb"]
@@ -370,7 +371,7 @@ elif task == 1:
         models = [model_d0, model_d1]
     elif delta_models == False:
         models = [model_0, model_1]
-elif task == 4:
+elif task == 4 or task == 5:
     if delta_models == True:
         models = [model_d0, model_d1, model_d2, model_d3]
     elif delta_models == False:
@@ -428,6 +429,9 @@ if delta_models:
     elif task == 4:
         prediction_data = df.loc[487:490]
         prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4_delta_cas.csv")
+    elif task == 5:
+        prediction_data = df.loc[482:485]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4_delta_cas.csv")
 else:
     if task == 1:
         prediction_data = df.loc[490:495]
@@ -441,7 +445,9 @@ else:
     elif task == 4:
         prediction_data = df.loc[487:490]
         prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4_cas.csv")
-
+    elif task == 5:
+        prediction_data = df.loc[482:485]
+        prediction_data.to_csv("/pfs/work7/workspace/scratch/kn_pop503398-ViEWS-0/forecasts_t4_cas.csv")
 
 for model in models:
     model.evaluate(df)
